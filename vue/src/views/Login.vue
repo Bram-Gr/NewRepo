@@ -40,6 +40,7 @@ export default {
   },
   methods: {
     login() {
+      this.user.username = this.user.username.toLocaleLowerCase();
       authService
         .login(this.user)
         .then(response => {

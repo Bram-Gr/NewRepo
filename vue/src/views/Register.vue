@@ -42,6 +42,7 @@ export default {
   },
   methods: {
     register() {
+      this.user.username = this.user.username.toLowerCase();
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';

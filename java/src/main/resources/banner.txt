@@ -1,5 +1,9 @@
-,--------.                ,--.        ,------. ,--.                               ,--.
-'--.  .--'  ,---.   ,---. |  ,---.    |  .---' |  |  ,---.  ,--.  ,--.  ,--,--. ,-'  '-.  ,---.  ,--.--.
-   |  |    | .-. : | .--' |  .-.  |   |  `--,  |  | | .-. :  \  `'  /  ' ,-.  | '-.  .-' | .-. | |  .--'
-   |  |    \   --. \ `--. |  | |  |   |  `---. |  | \   --.   \    /   \ '-'  |   |  |   ' '-' ' |  |
-   `--'     `----'  `---' `--' `--'   `------' `--'  `----'    `--'     `--`--'   `--'    `---'  `--'
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+              ,--./,-.
+             / #      \
+            |          |
+             \        /
+              `._,._,'
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
