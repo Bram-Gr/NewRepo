@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class Quizzes {
+public class Quiz {
     public int quizId;
     public int categoryId;
     public String question;
