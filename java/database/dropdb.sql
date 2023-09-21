@@ -7,7 +7,7 @@ SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
 WHERE datname = 'quizzical';
 
-DROP DATABASE Quizzical;
+DROP DATABASE quizzical;
 
 DROP USER quizzical_owner;
 DROP USER quizzical_appuser;
