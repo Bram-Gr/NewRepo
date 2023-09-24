@@ -4,7 +4,7 @@
     <p>Browse Categories to Select a Qiuz</p>
 
    <router-link 
-   :to="{name: 'category', params: {id: category.categoryId}}"
+   :to="{name: 'quizList', params: {categoryId: category.categoryId}}"
    v-for="category in categories" :key="category.categoryId">
     <category :category="category"/>
    </router-link>

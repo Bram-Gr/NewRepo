@@ -5,8 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import Quiz from '../components/Quiz.vue'
-
+import Quizzes from '../views/Quizzes.vue'
+import Quiz from '../views/Quiz.vue'
 Vue.use(Router)
 
 /**
@@ -53,17 +53,26 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }, 
-     {
-      path: "/category/:id",
-      name: "category",
+    },
+
+    {
+      path: "/categories/:categoryId/quizzes",
+      name: "quizList",
+      component: Quizzes,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
+    {
+      path: "/quiz/:quizId",
+      name: "Quiz",
       component: Quiz,
       meta: {
         requiresAuth: false
       }
     }
-  ]
-})
+  ]})
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication
