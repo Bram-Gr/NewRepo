@@ -21,8 +21,6 @@ CREATE TABLE categories (
 CREATE TABLE quizzes (
     quiz_id SERIAL PRIMARY KEY,
     quiz_name VARCHAR(250),
-    question VARCHAR(250) NOT NULL,
-    answer VARCHAR(250) NOT NULL,
     category_id INTEGER,
     CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
@@ -30,6 +28,8 @@ CREATE TABLE quizzes (
 CREATE TABLE questions (
     question_id SERIAL PRIMARY KEY,
     quiz_id INTEGER,
+    question VARCHAR(250) NOT NULL,
+    answer VARCHAR(250) NOT NULL,
     CONSTRAINT fk_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
 );
 
