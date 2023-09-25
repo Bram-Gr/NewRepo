@@ -6,6 +6,16 @@ public class Quiz {
     public String question;
     public String answer;
 
+    public String quizName;
+
+    public String getQuizName() {
+        return quizName;
+    }
+
+    public void setQuizName(String quizName) {
+        this.quizName = quizName;
+    }
+
     public int getQuizId() {
         return quizId;
     }
@@ -25,6 +35,7 @@ public class Quiz {
     public String getQuestion() {
         return question;
     }
+
 
     public void setQuestion(String question) {
         this.question = question;

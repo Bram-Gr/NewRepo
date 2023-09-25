@@ -1,6 +1,7 @@
 <template>
   <div class="QuizTitleCard">
     <router-link
+
       :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
     >
       <h1>{{ quiz.quizName }}</h1>

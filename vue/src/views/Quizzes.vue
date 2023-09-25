@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1>Hello</h1>
+    <h1>Select Quiz</h1>
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
-{{ quizzes }}
   </div>
 </template>
 
@@ -35,7 +34,7 @@ export default {
       return filteredQuizzes;
     },
   },
-  created() {
+  mounted() {
     try {
       quizService.getQuizzesByCategoryId(this.$route.params.categoryId).then((response) => {
         this.quizzes = response.data;
