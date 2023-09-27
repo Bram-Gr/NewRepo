@@ -8,5 +8,5 @@ import java.util.List;
 public interface QuizDao {
   public List<Quiz> getQuestionsByQuizId(int quizId);
 
-  public boolean createQuiz (CreateQuizDTO quizDTO);
+  public boolean createQuiz (CreateQuizDTO quizDTO, int userId);
 }

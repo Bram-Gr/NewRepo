@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.List;
+
 public class CreateQuizDTO {
     private int quizId;
     private String quizName;
@@ -8,7 +10,16 @@ public class CreateQuizDTO {
     private String question;
     private String answer;
     private int userId;
+    private List<QuestionAnswerDTO> questionAnswers;
     private final String categoryName = "Custom Quizzes";
+
+    public List<QuestionAnswerDTO> getQuestionAnswers() {
+        return questionAnswers;
+    }
+
+    public void setQuestionAnswers(List<QuestionAnswerDTO> questionAnswers) {
+        this.questionAnswers = questionAnswers;
+    }
 
     public int getQuizId() {
         return quizId;

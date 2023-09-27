@@ -22,12 +22,4 @@ public class CategoryController {
         return categoryDao.getCategories();
     }
 
-
-    @PreAuthorize("permitAll")
-    @RequestMapping(path = "/categories/{categoryId}", method = RequestMethod.GET)//works
-    public List<Category> getQuizzesByCategoryId(@PathVariable int categoryId) {
-        return categoryDao.getQuizzesByCategoryId(categoryId);
-    }
-
-
 }

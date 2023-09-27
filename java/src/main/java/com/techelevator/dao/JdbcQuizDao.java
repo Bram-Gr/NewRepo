@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.CreateQuizDTO;
+import com.techelevator.model.QuestionAnswerDTO;
 import com.techelevator.model.Quiz;
 import com.techelevator.model.QuizList;
 import org.springframework.dao.DataAccessException;
@@ -41,30 +42,40 @@ public class JdbcQuizDao implements QuizDao{
     }
 
 
-    // the following method needs lots of testing
     @Override
-    public boolean createQuiz (CreateQuizDTO quiz){
-         String sql = "INSERT INTO quizzes (quiz_name, category_id)" +
-                "VALUES(?, ?) returning quiz_id";
-        String joinSql1 = "INSERT INTO questions (question_id, question, answer)" +
-                "VALUES(?,?,?) returning quiz_id";
-        String joinSql2 = "INSERT INTO users_quizzes (user_id)" +
-                "VALUES(?) returning quiz_id";
+    public boolean createQuiz(CreateQuizDTO quiz, int userId) {
+        String insertQuizSql = "INSERT INTO quizzes (quiz_name, category_id) VALUES (?, ?) RETURNING quiz_id";
 
         try {
-            int newQuizId = jdbcTemplate.queryForObject(sql, int.class, quiz.getQuizId(),
-                    quiz.getQuizName(), quiz.getCategoryId(), quiz.getQuestionId(),
-                    quiz.getQuestion(), quiz.getAnswer(), quiz.getUserId());
-            int newQuestionQuizId = jdbcTemplate.queryForObject(joinSql1, int.class, newQuizId);
-            int userQuizId = jdbcTemplate.queryForObject(joinSql2, int.class, newQuizId);
-            if (newQuizId > 0 && newQuestionQuizId > 0 && userQuizId > 0) {
-                return true;
+            int newQuizId = jdbcTemplate.queryForObject(insertQuizSql, int.class, quiz.getQuizName(), quiz.getCategoryId());
+
+            if (newQuizId > 0) {
+                String insertQuestionSql = "INSERT INTO questions (quiz_id, question, answer) VALUES (?, ?, ?)";
+                int rowsAffected = 0;
+
+                for (QuestionAnswerDTO qa : quiz.getQuestionAnswers()) {
+                    int result = jdbcTemplate.update(insertQuestionSql, newQuizId, qa.getQuestion(), qa.getAnswer());
+                    if (result > 0) {
+                        rowsAffected++;
+                    }
+                }
+
+                // Insert user-quiz association
+                String insertUserQuizSql = "INSERT INTO users_quizzes (user_id, quiz_id) VALUES (?, ?)";
+                int result2 = jdbcTemplate.update(insertUserQuizSql, userId, newQuizId);
+
+                // Check if all inserts were successful
+                if (rowsAffected == quiz.getQuestionAnswers().size() && result2 > 0) {
+                    return true;
+                }
             }
-        }catch(DataAccessException e){
+        } catch (DataAccessException e) {
             throw new DaoException("Could not create Quiz", e);
         }
         return false;
     }
+
+
 
     private Quiz mapRowToQuiz(SqlRowSet rs){
         Quiz quiz = new Quiz();

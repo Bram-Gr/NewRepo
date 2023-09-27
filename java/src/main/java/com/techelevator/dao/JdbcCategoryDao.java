@@ -32,22 +32,6 @@ public class JdbcCategoryDao implements CategoryDao{
         }
         return listOfCategories;
     }
-    @Override
-    public List<Category> getQuizzesByCategoryId(int categoryId){
-        List<Category> listOfCategories = new ArrayList<>();
-        String sql = "SELECT * FROM categories where category_id=?;";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql,categoryId);
-            while(results.next()) {
-                Category category = mapRowToCategory(results);
-                listOfCategories.add(category);
-            }
-        } catch (DataAccessException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot find list of categories");
-        }
-        return listOfCategories;
-    }
-
 
     private Category mapRowToCategory(SqlRowSet rs){
         Category category = new Category();

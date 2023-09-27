@@ -41,8 +41,8 @@ public class QuizController{
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(path = "/categories/{categoryId}/quizzes", method = RequestMethod.POST)
-    public boolean createQuiz(@RequestBody CreateQuizDTO quiz){
-        return quizDao.createQuiz(quiz);
+    @RequestMapping(path = "/create-quiz/{userId}", method = RequestMethod.POST)
+    public boolean createQuiz(@RequestBody CreateQuizDTO quiz, @PathVariable int userId){
+        return quizDao.createQuiz(quiz, userId);
     }
 }
