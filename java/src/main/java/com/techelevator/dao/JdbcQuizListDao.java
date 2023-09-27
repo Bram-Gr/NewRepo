@@ -57,14 +57,29 @@ public class JdbcQuizListDao implements QuizListDao {
         }
         return quizList;
     }
+
+    @Override
+    public List<QuizList> getQuizListByUserId(int userId){
+        List<QuizList> quizList = new ArrayList<>();
+        String sql ="SELECT * FROM quizzes "+
+                "JOIN users_quizzes ON users_quizzes.quiz_id = quizzes.quiz_id "+
+                "Where users_quizzes.user_id =?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while(results.next()) {
+                QuizList quiz = mapRowToQuiz(results);
+                quizList.add(quiz);
+            }
+        } catch (DataAccessException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cannot find list of quizzes");
+        }
+        return quizList;
+    }
 private QuizList mapRowToQuiz(SqlRowSet rs){
         QuizList quiz = new QuizList();
         quiz.setQuizId(rs.getInt("quiz_id"));
         quiz.setQuizName(rs.getString("quiz_name"));
         quiz.setCategoryId(rs.getInt("category_id"));
-//        quiz.setQuestion(rs.getString("question"));
-//        quiz.setAnswer(rs.getString("answer")); had to remove to make the jdbc work, maybe make
-//        this object quizlist and a separate objet for quiz that will have the question and answer?
         return quiz;
     }
 }

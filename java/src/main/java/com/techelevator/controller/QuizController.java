@@ -45,4 +45,10 @@ public class QuizController{
     public boolean createQuiz(@RequestBody CreateQuizDTO quiz, @PathVariable int userId){
         return quizDao.createQuiz(quiz, userId);
     }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/users/{userId}/quizzes", method = RequestMethod.GET)
+    public List<QuizList> getQuizListByUserId(@PathVariable int userId){
+        return quizListDao.getQuizListByUserId(userId);
+    }
 }

@@ -9,5 +9,6 @@ public interface QuizListDao {
 
     public List<QuizList> getQuizListByQuizId(int quizId);
     public List<QuizList> getQuizListByCategoryId(int categoryId);
+    public List<QuizList> getQuizListByUserId(int userId);
 
 }
