@@ -1,10 +1,8 @@
 package com.techelevator.model;
 
-public class Quiz {
+public class QuizList {
     public int quizId;
     public int categoryId;
-    public String question;
-    public String answer;
 
     public String quizName;
 
@@ -30,22 +28,5 @@ public class Quiz {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 }

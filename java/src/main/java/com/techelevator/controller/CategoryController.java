@@ -16,10 +16,18 @@ public class CategoryController {
     public CategoryController(CategoryDao categoryDao, UserDao userDao){
         this.categoryDao = categoryDao;
     }
-
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/categories", method = RequestMethod.GET)//works
     public List<Category> getCategories() {
         return categoryDao.getCategories();
     }
+
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/categories/{categoryId}", method = RequestMethod.GET)//works
+    public List<Category> getQuizzesByCategoryId(@PathVariable int categoryId) {
+        return categoryDao.getQuizzesByCategoryId(categoryId);
+    }
+
+
 }
