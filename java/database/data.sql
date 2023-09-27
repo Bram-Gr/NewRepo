@@ -11,6 +11,7 @@ INSERT INTO categories (category_name) VALUES ('science');
 INSERT INTO categories (category_name) VALUES ('music');
 INSERT INTO categories (category_name) VALUES ('history');
 INSERT INTO categories (category_name) VALUES ('art');
+INSERT INTO categories (category_name) VALUES ('Custom Quizzes');
 
 -- Insert quizzes
 -- Marvel Movie Quiz
