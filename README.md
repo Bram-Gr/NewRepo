@@ -1,5 +1,12 @@
-# Final Capstone
-​
-This directory contains all of the starter projects for the final capstone.
-​
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+
+Quizzical is a notecard learning app that allows users to interact with pre-made quizzes and make their own! This application is built with the Tech Elevator Final Capstone code for authorization and login features
+
+Features
+-Select Quizess
+-Interact with NoteCards
+
+Planned Features
+-Make your own Quiz
+-Styling 
+-Styling for moibile
+-Fun selection features with draw graphics
