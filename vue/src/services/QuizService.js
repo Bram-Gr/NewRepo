@@ -9,5 +9,11 @@ export default {
     },
     getQuestionsByQuizId(quizId){
         return axios.get(`quiz/${quizId}`)
+    },
+    getQuizzesByUserId(userId){
+        return axios.get(`users/${userId}/quizzes`)
+    },
+    createQuiz(payload){
+        return axios.post(`users/${payload.userId}/quizzes`, payload)
     }
 }

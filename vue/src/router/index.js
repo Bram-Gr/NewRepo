@@ -55,7 +55,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    
+    {
+      path:"/categories/:userId",
+      name:"userQuizList",
+      component: Quizzes,
+      meta:{
+        requiresAuth: true
+      }
+    },
     {
       path: "/categories/:quizId/quizzes",
       name: "Quiz",

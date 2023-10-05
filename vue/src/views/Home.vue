@@ -4,16 +4,21 @@
     <p>Browse Categories to Select a Quiz</p>
 
     <router-link class="link"
-      :to="{ name: 'quizList', params: { categoryId: category.categoryId } }"
-      v-for="category in categories"
-      :key="category.categoryId"
-    >
-      <category :category="category" />
-    </router-link>
+  :to="getQuizListRoute(category.categoryId, user.userId)"
+  v-for="category in categories"
+  :key="category.categoryId"
+>
+  <category :category="category" />
+</router-link>
+
+
+
+
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import CategoryService from '../services/CategoryService';
 import Category from '../components/Category';
 
@@ -24,12 +29,28 @@ export default {
     return {
       category: '',
       categories: [],
+      user:{}
     };
+  },
+  methods: {
+  getQuizListRoute(categoryId, userId) {
+    if (categoryId === 6) {
+      // If categoryId is 6, navigate to "userQuizList" with user.userId
+      return { name: 'userQuizList', params: { userId } };
+    } else {
+      // Otherwise, navigate to "quizList" with categoryId
+      return { name: 'quizList', params: { categoryId } };
+    }
+   }
+  },
+  computed:{
+     ...mapState('user',['userId'])
   },
   created() {
     CategoryService.getCategories().then((response) => {
       this.categories = response.data;
     });
+    this.userId = this.$store.state.user.id || '';
   },
 };
 </script>
