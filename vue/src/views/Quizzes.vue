@@ -36,10 +36,24 @@ export default {
   },
   mounted() {
     try {
-      quizService.getQuizzesByCategoryId(this.$route.params.categoryId).then((response) => {
-        this.quizzes = response.data;
-        console.log(response.data);
-      });
+      const routeParams = this.$route.params;
+
+      if ('userId' in routeParams) {
+        // If userId is in routeParams, use getQuizzesByUserId
+        quizService.getQuizzesByUserId(routeParams.id).then((response) => {
+          this.quizzes = response.data;
+          console.log(response.data);
+        });
+      } else if ('categoryId' in routeParams) {
+        // If categoryId is in routeParams, use getQuizzesByCategoryId
+        quizService.getQuizzesByCategoryId(routeParams.categoryId).then((response) => {
+          this.quizzes = response.data;
+          console.log(response.data);
+        });
+      } else {
+        // Handle the case where neither userId nor categoryId is present
+        console.error('Invalid route parameters');
+      }
     } catch (error) {
       console.error(error);
     }

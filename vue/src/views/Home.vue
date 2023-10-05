@@ -33,10 +33,10 @@ export default {
     };
   },
   methods: {
-  getQuizListRoute(categoryId, userId) {
+  getQuizListRoute(categoryId, id) {
     if (categoryId === 6) {
       // If categoryId is 6, navigate to "userQuizList" with user.userId
-      return { name: 'userQuizList', params: { userId } };
+      return { name: 'userQuizList', params: { id } };
     } else {
       // Otherwise, navigate to "quizList" with categoryId
       return { name: 'quizList', params: { categoryId } };
@@ -50,7 +50,7 @@ export default {
     CategoryService.getCategories().then((response) => {
       this.categories = response.data;
     });
-    this.userId = this.$store.state.user.id || '';
+    this.user.id = this.$store.state.user.id || '';
   },
 };
 </script>
