@@ -4,7 +4,7 @@
     <p>Browse Categories to Select a Quiz</p>
 
     <router-link class="link"
-  :to="getQuizListRoute(category.categoryId, user.userId)"
+  :to="getQuizListRoute(category.categoryId, user.id)"
   v-for="category in categories"
   :key="category.categoryId"
 >
@@ -44,7 +44,7 @@ export default {
    }
   },
   computed:{
-     ...mapState('user',['userId'])
+     ...mapState('user',['Id'])
   },
   created() {
     CategoryService.getCategories().then((response) => {
