@@ -38,7 +38,7 @@ export default {
     try {
       const routeParams = this.$route.params;
 
-      if ('userId' in routeParams) {
+      if ('id' in routeParams) {
         // If userId is in routeParams, use getQuizzesByUserId
         quizService.getQuizzesByUserId(routeParams.id).then((response) => {
           this.quizzes = response.data;

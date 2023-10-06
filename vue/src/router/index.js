@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Quizzes from '../views/Quizzes.vue'
 import Quiz from '../views/Quiz.vue'
-import QuizzesCopy from '../views/QuizzesCopy'
+
 Vue.use(Router)
 
 
@@ -57,9 +57,9 @@ const router = new Router({
       }
     },
     {
-      path:"/categories/:userId",
+      path:"/categories/:id",
       name:"userQuizList",
-      component: QuizzesCopy,
+      component: Quizzes,
       meta:{
         requiresAuth: true
       }
