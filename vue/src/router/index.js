@@ -57,7 +57,7 @@ const router = new Router({
       }
     },
     {
-      path:"/categories/:id",
+      path:"/user-categories/:id",
       name:"userQuizList",
       component: Quizzes,
       meta:{
