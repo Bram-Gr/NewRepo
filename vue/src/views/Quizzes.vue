@@ -2,15 +2,16 @@
   <div>
     <h1>Select Quiz</h1>
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
+    <create-quiz v-if="routeParamsCheck"/>
   </div>
 </template>
 
 <script>
 import quizList from "../components/QuizList.vue";
 import quizService from "../services/QuizService";
-
+import createQuiz from "../components/CreateQuiz.vue"
 export default {
-  components: { quizList },
+  components: { quizList, createQuiz },
   data() {
     return {
       quiz: {},
@@ -33,6 +34,9 @@ export default {
 
       return filteredQuizzes;
     },
+    routeParamsCheck(){
+      return "id" in this.$route.params;
+    }
   },
   mounted() {
     try {
