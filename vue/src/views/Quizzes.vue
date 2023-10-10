@@ -2,7 +2,14 @@
   <div>
     <h1>Select Quiz</h1>
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
-    <create-quiz v-if="routeParamsCheck"/>
+
+    <div v-if="routeParamsCheck">
+    <button @click="openModal">Create Quiz</button>
+    <create-quiz  v-if="isModalOpen" @closeModal="closeModal">
+
+    </create-quiz>
+  </div>
+  
   </div>
 </template>
 
@@ -15,8 +22,17 @@ export default {
   data() {
     return {
       quiz: {},
-      quizzes: []
+      quizzes: [],
+      isModalOpen: false
     };
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = true; // Open the modal
+    },
+    closeModal() {
+      this.isModalOpen = false; // Close the modal
+    },
   },
   computed: {
     uniqueQuizzes() {
