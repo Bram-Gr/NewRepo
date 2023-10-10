@@ -4,9 +4,9 @@
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
 
     <div  v-if="routeParamsCheck">
-    
-    <create-quiz ref="quizModal" />
     <button @click="openModal">Create Quiz</button>
+    <create-quiz v-if="isModalOpen" />
+
   </div>
   
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     openModal() {
-      this.$refs.quizModal.openModal();
+      this.isModalOpen = true; // Open the modal
     },
     closeModal() {
       this.isModalOpen = false; // Close the modal

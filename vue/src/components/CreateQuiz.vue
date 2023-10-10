@@ -2,7 +2,6 @@
   <modal name="create-quiz-modal" class="modal">
     <!-- Modal content goes here -->
     <div class="modal-content">
-      <h2>Create Quiz</h2>
       <form @submit.prevent="submitQuiz">
         <label for="quizName">Quiz Name:</label>
         <input type="text" id="quizName" v-model="quizName" required>
@@ -24,6 +23,7 @@
 </template>
 
 <script>
+import quizService from '../services/QuizService';
 export default {
   data() {
     return {
@@ -38,17 +38,28 @@ export default {
     submitQuiz() {
       const payload = {
         quizName: this.quizName,
-        categoryId: 6, // Set your category ID here
+        categoryId: 6, 
         questionAnswers: this.questions,
-        userId: this.userId, // You need to set the user ID here
+    
       };
-      // Make your Axios POST request to create the quiz with the payload
-      this.$store.dispatch('createQuiz', payload);
+    
+ 
+  quizService.createQuiz(this.$storeid, payload)
+    .then((response) => {
+      
+      console.log('Quiz created successfully', response);
+
       // Close the modal
       this.$modal.hide('create-quiz-modal');
-    },
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the Axios request
+      console.error('Error creating quiz', error);
+    });
+},
+
     closeModal() {
-      this.$modal.hide('create-quiz-modal');
+      this.$emit.hide('create-quiz-modal');
     },
   },
 };
@@ -56,7 +67,7 @@ export default {
 
 
 <style scoped>
-/* Add your modal styles here */
+
 .modal {
   
 }
