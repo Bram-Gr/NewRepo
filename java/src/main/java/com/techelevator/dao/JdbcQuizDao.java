@@ -1,10 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.CreateQuizDTO;
-import com.techelevator.model.QuestionAnswerDTO;
-import com.techelevator.model.Quiz;
-import com.techelevator.model.QuizList;
+import com.techelevator.model.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -70,10 +67,43 @@ public class JdbcQuizDao implements QuizDao{
                 }
             }
         } catch (DataAccessException e) {
-            throw new DaoException("Could not create Quiz", e);
+            throw new DaoException("Could not edit Quiz", e);
         }
         return false;
     }
+
+    @Override
+    public boolean updateQuiz(UpdateQuizDTO updatedQuiz, int quizId) {
+        String updateQuizSql = "UPDATE quizzes SET quiz_name = ?, category_id = ? WHERE quiz_id = ?";
+        String deleteQuestionsSql = "DELETE FROM questions WHERE quiz_id = ?";
+        String insertQuestionSql = "INSERT INTO questions (quiz_id, question, answer) VALUES (?, ?, ?)";
+
+        try {
+            // Update the quiz information
+            int rowsUpdated = jdbcTemplate.update(updateQuizSql, updatedQuiz.getQuizName(), updatedQuiz.getCategoryId(), quizId);
+
+            // Delete existing questions for the quiz
+            jdbcTemplate.update(deleteQuestionsSql, quizId);
+
+            // Insert updated questions
+            int rowsAffected = 0;
+            for (QuestionAnswerDTO qa : updatedQuiz.getQuestionAnswers()) {
+                int result = jdbcTemplate.update(insertQuestionSql, quizId, qa.getQuestion(), qa.getAnswer());
+                if (result > 0) {
+                    rowsAffected++;
+                }
+            }
+
+            // Check if the update and insert operations were successful
+            if (rowsUpdated > 0 && rowsAffected == updatedQuiz.getQuestionAnswers().size()) {
+                return true;
+            }
+        } catch (DataAccessException e) {
+            throw new DaoException("Could not update Quiz", e);
+        }
+        return false;
+    }
+
 
 @Override
 public boolean deleteQuizByQuizId(int quizId){

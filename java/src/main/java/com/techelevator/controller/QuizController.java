@@ -5,6 +5,7 @@ import com.techelevator.dao.QuizListDao;
 import com.techelevator.model.CreateQuizDTO;
 import com.techelevator.model.Quiz;
 import com.techelevator.model.QuizList;
+import com.techelevator.model.UpdateQuizDTO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,8 +53,13 @@ public class QuizController{
         return quizListDao.getQuizListByUserId(userId);
     }
     @PreAuthorize("permitAll")
-    @RequestMapping(path = "/users/{quizId}/delete-quiz", method = RequestMethod.GET)
+    @RequestMapping(path = "/users/{quizId}/delete-quiz", method = RequestMethod.POST)
     public boolean deleteQuiz(@PathVariable int quizId){
         return quizDao.deleteQuizByQuizId(quizId);
+    }
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/update-quiz/{quizId}", method = RequestMethod.PUT)
+    public boolean updateQuiz(@RequestBody UpdateQuizDTO quiz, @PathVariable int quizId){
+        return quizDao.updateQuiz(quiz, quizId);
     }
 }
