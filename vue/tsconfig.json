@@ -1,0 +1,17 @@
+
+{
+    "compilerOptions": {
+      "module": "CommonJS",
+      "target": "ES6",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": true
+    },
+    "include": [
+   
+      "vue2-modal.d.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

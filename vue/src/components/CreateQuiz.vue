@@ -1,8 +1,8 @@
 <template>
-  <modal name="create-quiz-modal" class="modal">
+
     <!-- Modal content goes here -->
     <div class="modal-content">
-      <form @submit.prevent="submitQuiz">
+      <form @submit="submitQuiz">
         <label for="quizName">Quiz Name:</label>
         <input type="text" id="quizName" v-model="quizName" required>
 
@@ -14,12 +14,12 @@
         </div>
 
         <button type="button" @click="addQuestion">Add Question</button>
-
+        <button type="button" @click="removeQuestion">Remove Question</button>
         <button type="submit">Create</button>
         <button @click="closeModal">Close</button>
       </form>
     </div>
-  </modal>
+
 </template>
 
 <script>
@@ -34,6 +34,9 @@ export default {
   methods: {
     addQuestion() {
       this.questions.push({ question: '', answer: '' });
+    }, 
+    removeQuestion() {
+      this.questions.pop();
     },
     submitQuiz() {
       const payload = {
@@ -44,22 +47,22 @@ export default {
       };
     
  
-  quizService.createQuiz(this.$storeid, payload)
+  quizService.createQuiz(this.$store.state.user.id, payload)
     .then((response) => {
       
       console.log('Quiz created successfully', response);
 
       // Close the modal
-      this.$modal.hide('create-quiz-modal');
+      this.closeModal();
     })
     .catch((error) => {
       // Handle any errors that occur during the Axios request
-      console.error('Error creating quiz', error);
+      console.error('Error Submitting Quiz', error);
     });
 },
 
     closeModal() {
-      this.$emit.hide('create-quiz-modal');
+      this.$emit('closeModal');
     },
   },
 };

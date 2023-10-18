@@ -13,7 +13,7 @@ export default {
     getQuizzesByUserId(userId){
         return axios.get(`users/${userId}/quizzes`)
     },
-    createQuiz(id, payload){
-        return axios.post(`users/${id}/quizzes`, payload)
+    createQuiz(userId, payload){
+        return axios.post(`create-quiz/${userId}`, payload)
     }
 }
