@@ -6,8 +6,7 @@
     <div  v-if="routeParamsCheck">
     <button @click="openModal">Create Quiz</button>
     <create-quiz v-if="isModalOpen" @click="closeModal" @closeModal="closeModal"/>
-
-  </div>
+   </div>
   
   </div>
 </template>
