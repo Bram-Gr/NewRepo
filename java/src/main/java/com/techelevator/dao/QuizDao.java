@@ -9,4 +9,6 @@ public interface QuizDao {
   public List<Quiz> getQuestionsByQuizId(int quizId);
 
   public boolean createQuiz (CreateQuizDTO quizDTO, int userId);
+
+  public boolean deleteQuizByQuizId(int quizId);
 }

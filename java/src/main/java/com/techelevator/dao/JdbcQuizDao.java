@@ -75,7 +75,20 @@ public class JdbcQuizDao implements QuizDao{
         return false;
     }
 
-
+@Override
+public boolean deleteQuizByQuizId(int quizId){
+    String questionSql = "DELETE FROM questions WHERE quiz_id=?";
+    String userQuizSql = "DELETE FROM users_quizzes WHERE quiz_id =?";
+    String sql = "DELETE FROM quizzes WHERE quiz_id = ?";
+    try{
+        jdbcTemplate.update(questionSql, quizId);
+        jdbcTemplate.update(userQuizSql, quizId);
+        int rowsAffected = jdbcTemplate.update( sql,quizId);
+        return rowsAffected != 0;
+    } catch (DataAccessException e) {
+        throw new DaoException("Cannot delete quiz", e);
+    }
+};
 
     private Quiz mapRowToQuiz(SqlRowSet rs){
         Quiz quiz = new Quiz();

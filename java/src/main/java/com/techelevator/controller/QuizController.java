@@ -51,4 +51,9 @@ public class QuizController{
     public List<QuizList> getQuizListByUserId(@PathVariable int userId){
         return quizListDao.getQuizListByUserId(userId);
     }
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/users/{quizId}/delete-quiz", method = RequestMethod.GET)
+    public boolean deleteQuiz(@PathVariable int quizId){
+        return quizDao.deleteQuizByQuizId(quizId);
+    }
 }
