@@ -4,18 +4,19 @@
     <div class="modal-content">
       <form @submit="submitQuiz">
         <label for="quizName">Quiz Name:</label>
-        <input type="text" id="quizName" v-model="quizName" required>
+        <textarea  class="input" id="quizName" v-model="quizName" required/>
 
         <div v-for="(question, index) in questions" :key="index">
           <label>Question {{ index + 1 }}:</label>
-          <input type="text" v-model="questions[index].question" required>
-          <label>Answer {{ index + 1 }}:</label>
-          <input type="text" v-model="questions[index].answer" required>
+          <textarea class="input" v-model="questions[index].question" required/>
+          <label>  Answer {{ index + 1 }}:</label>
+          <textarea class="input" v-model="questions[index].answer" required/>
+          <button type="button" @click="addQuestion">Add Question</button>
+        <button type="button" @click="removeQuestion(index)">Remove Question</button>
         </div>
 
-        <button type="button" @click="addQuestion">Add Question</button>
-        <button type="button" @click="removeQuestion">Remove Question</button>
-        <button type="submit">Create</button>
+      
+        <button type="submit">Save</button>
         <button @click="closeModal">Close</button>
       </form>
     </div>
@@ -25,6 +26,9 @@
 <script>
 import quizService from '../services/QuizService';
 export default {
+  props:{
+    quiz: Object
+  },
   data() {
     return {
       quizName: '',
@@ -35,8 +39,8 @@ export default {
     addQuestion() {
       this.questions.push({ question: '', answer: '' });
     }, 
-    removeQuestion() {
-      this.questions.pop();
+    removeQuestion(index) {
+      this.questions.splice(index,1);
     },
     submitQuiz() {
       const payload = {
@@ -62,7 +66,24 @@ export default {
 },
 
     closeModal() {
+      console.log("closing modal")
       this.$emit('closeModal');
+    },
+ 
+    async saveQuiz() {
+      try {
+        // Make the Axios request to update the quiz
+        await quizService.editQuiz(this.updatedQuiz.quizId, this.updatedQuiz); // Use quizId from your data
+
+        // Emit an event to notify the parent component
+        this.$emit('save', this.updatedQuiz); // Send the updated quiz data
+
+        // Clear the form or reset any state
+        this.updatedQuiz = { ...this.quiz }; // Reset to the original data
+      } catch (error) {
+        console.error('Error updating quiz', error);
+        // Handle the error as needed (e.g., show an error message)
+      }
     },
   },
 };
@@ -74,7 +95,10 @@ export default {
 .modal {
   
 }
-
+.input{
+  margin-left: 1rem;
+  margin-top:.2rem;
+}
 h2 {
   font-size: 1.5rem;
 }
