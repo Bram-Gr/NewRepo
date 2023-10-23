@@ -10,11 +10,11 @@
           v-if="quiz.categoryId === 6"
         ></button>
 
+        <button @click.prevent="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
+    
 
-        <button @click.prevent="editAndOpen(editingQuiz)" v-if="quiz.categoryId === 6">Edit Quiz</button>
-       
-    <!-- Conditionally render create-quiz component -->
      
+       
 
         <!-- <button
           class="update"
@@ -23,50 +23,48 @@
         >Edit Quiz</button> -->
 
       </div>
-      
+
     </router-link>
-    <create-quiz v-if="isModalOpen" @click="closeModal" @closeModal="closeModal" :quiz="editingQuiz" @save="saveQuiz"></create-quiz>
+    <edit-quiz v-if="isModalOpen" :quiz="editingQuiz" :submitFunction="submitEdit" @closeModal="closeModal"  />
   </div>
 </template>
 
 <script>
-import createQuiz from "./CreateQuiz.vue";
+import EditQuiz from "./EditQuiz.vue";
 import quizService from "../services/QuizService";
 export default {
   data(){
   return{
-    editingQuiz: {
-        quizName: this.quiz.quizName,
-        categoryId: 6, 
-        questionAnswers: this.quiz.questions    
-      },
-   isModalOpen: false,
+    editingQuiz: false, // Initialize with no quiz to edit
+   existingQuizData: this.quiz,
+   isModalOpen:false
   }
 },
-  components:{createQuiz},
+  components:{EditQuiz},
   name: "quiz",
   props: {
     quiz: Object,
   },
   methods: {
-    editAndOpen(quiz) {
-    // Call the "editQuiz" method
-    this.editQuiz(quiz);
-
-    // Call the "openModal" method
-    this.openModal();
-  },
     openModal() {
       this.isModalOpen = true; // Open the modal
     },
     closeModal() {
-      this.isModalOpen = false; // Close the modal
+      // Close the modal
+    },
+    submitEdit(formData) {
+      // Handle the submission logic for editing the quiz
+      console.log('Data to update:', formData);
+      // Call the appropriate service method to update the quiz
+      // Then close the modal or perform other actions as needed
+      this.closeModal();
     },
     deleteQuiz(quiz) {
       const userConfirm = confirm(
         "Would you like to delete " + quiz.quizName + "?"
       );
       if (userConfirm) {
+        event.preventDefault();
         window.location.reload();
         quizService
           .deleteQuiz(quiz.quizId)
@@ -81,39 +79,20 @@ export default {
         event.preventDefault();
       }
     },
-    editQuiz() {
-      const payload = {
-        quizName: this.quiz.quizName,
-        categoryId: 6, 
-        questionAnswers: this.quiz.questions,
-    
-      };
+    editQuiz(quiz) {
+      this.isModalOpen = true;
       event.preventDefault();
-     console.log("this is the quiz data"+ payload)
       this.editingQuiz = true;
      
       // Set the quiz you want to edit
-      this.editingQuiz =payload; // Make a copy of the quiz data
+      this.editingQuiz = { ...quiz }; // Make a copy of the quiz data
     },
     saveQuiz() {
-      // Make the Axios call to update the quiz
-      const quizId = this.editingQuiz.quizId; // Assuming you have a quizId
-      const payload = this.editingQuiz;
-console.log("reached save quiz")
-      quizService
-        .editQuiz(quizId, payload)
-        .then((response) => {
-          console.log("Quiz updated successfully", response);
-
-          // Clear the editing state
-          this.editingQuiz = null;
-
-          // Close the modal
-          this.closeModal();
-        })
-        .catch((error) => {
-          console.error("Error updating quiz", error);
-        });
+      event.preventDefault();
+      // Handle saving the updated quiz (Axios call, etc.)
+      // Then clear the editing state
+      this.editingQuiz = null;
+      window.location.reload();
     },
   }, 
 };
