@@ -6,7 +6,7 @@
   
         <div v-for="(question, index) in questions" :key="index">
           <label>Question {{ index + 1 }}:</label>
-          <textarea class="input" v-model="questions[index].question" required />
+          <textarea class="input" v-model="questions[index].question" required/>
           <label>Answer {{ index + 1 }}:</label>
           <textarea class="input" v-model="questions[index].answer" required />
           <button type="button" @click="addQuestion">Add Question</button>
@@ -20,7 +20,9 @@
   </template>
   
   <script>
-  export default {
+ 
+  
+  export default{
     props: {
       quiz: Object, // Pass the quiz data to prepopulate the form
       submitFunction: Function, // The callback function for saving edits
@@ -28,18 +30,20 @@
     data() {
       return {
         quizName: this.quiz.quizName, // Prepopulate the form fields
-        questions: this.quiz.questions, // Prepopulate the form fields
+        questions: this.quiz.questionAnswers || [],
       };
     },
     methods: {
       submitEdit() {
-        const formData = {
+        const payload = {
+          quizId: this.quiz.quizId,
           quizName: this.quizName,
           categoryId: 6,
           questionAnswers: this.questions,
         };
+  
         if (typeof this.submitFunction === 'function') {
-          this.submitFunction(formData); // Pass the data to the parent
+          this.submitFunction(payload); // Pass the data to the parent
         }
       },
       addQuestion() {
@@ -54,4 +58,10 @@
     },
   };
   </script>
-  
+  <style>
+
+.input {
+  margin-left: 1rem;
+  margin-top: 0.2rem;
+}
+</style>

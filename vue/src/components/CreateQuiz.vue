@@ -69,22 +69,7 @@ export default {
       console.log("closing modal")
       this.$emit('closeModal');
     },
- 
-    async saveQuiz() {
-      try {
-        // Make the Axios request to update the quiz
-        await quizService.editQuiz(this.updatedQuiz.quizId, this.updatedQuiz); // Use quizId from your data
 
-        // Emit an event to notify the parent component
-        this.$emit('save', this.updatedQuiz); // Send the updated quiz data
-
-        // Clear the form or reset any state
-        this.updatedQuiz = { ...this.quiz }; // Reset to the original data
-      } catch (error) {
-        console.error('Error updating quiz', error);
-        // Handle the error as needed (e.g., show an error message)
-      }
-    },
   },
 };
 </script>

@@ -10,17 +10,11 @@
           v-if="quiz.categoryId === 6"
         ></button>
 
-        <button @click.prevent="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
+        <button @click="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
     
 
      
-       
-
-        <!-- <button
-          class="update"
-          @click="editQuiz(quiz)"
-          v-if="quiz.categoryId === 6"
-        >Edit Quiz</button> -->
+      
 
       </div>
 
@@ -35,13 +29,11 @@ import quizService from "../services/QuizService";
 export default {
   data(){
   return{
-    editingQuiz: false, // Initialize with no quiz to edit
    existingQuizData: this.quiz,
    isModalOpen:false
   }
 },
   components:{EditQuiz},
-  name: "quiz",
   props: {
     quiz: Object,
   },
@@ -50,14 +42,18 @@ export default {
       this.isModalOpen = true; // Open the modal
     },
     closeModal() {
-      // Close the modal
+      this.isModalOpen = false;
     },
     submitEdit(formData) {
-      // Handle the submission logic for editing the quiz
-      console.log('Data to update:', formData);
-      // Call the appropriate service method to update the quiz
-      // Then close the modal or perform other actions as needed
-      this.closeModal();
+      
+      quizService.editQuiz(formData).then((response)=>{
+        console.log("edit quiz successful"+response);
+        this.closeModal();
+        window.location.reload();
+      }).catch((error) => {
+      // Handle any errors that occur during the Axios request
+      console.error('Error editing Quiz', formData, error);
+    });
     },
     deleteQuiz(quiz) {
       const userConfirm = confirm(
@@ -82,17 +78,11 @@ export default {
     editQuiz(quiz) {
       this.isModalOpen = true;
       event.preventDefault();
-      this.editingQuiz = true;
+ 
      
       // Set the quiz you want to edit
-      this.editingQuiz = { ...quiz }; // Make a copy of the quiz data
-    },
-    saveQuiz() {
-      event.preventDefault();
-      // Handle saving the updated quiz (Axios call, etc.)
-      // Then clear the editing state
-      this.editingQuiz = null;
-      window.location.reload();
+      this.editingQuiz = JSON.parse(JSON.stringify(quiz));
+// Make a copy of the quiz data
     },
   }, 
 };

@@ -16,8 +16,8 @@ export default {
     createQuiz(userId, payload){
         return axios.post(`create-quiz/${userId}`, payload)
     },
-    editQuiz(quizId, payload){
-        return axios.put(`/update-quiz/${quizId}`, payload)
+    editQuiz(payload){
+        return axios.put(`/update-quiz/${payload.quizId}`, payload)
     },
     deleteQuiz(quizId){
         return axios.delete(`/users/${quizId}/delete-quiz`)
