@@ -11,15 +11,12 @@
         ></button>
 
         <button @click="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
-    
 
-     
-      
 
       </div>
 
     </router-link>
-    <edit-quiz v-if="isModalOpen" :quiz="editingQuiz" :submitFunction="submitEdit" @closeModal="closeModal"  />
+    <edit-quiz v-if="isModalOpen" :quizData="this.quizData" :quiz="this.quiz" :submitFunction="submitEdit" @closeModal="closeModal"  />
   </div>
 </template>
 
@@ -29,13 +26,23 @@ import quizService from "../services/QuizService";
 export default {
   data(){
   return{
-   existingQuizData: this.quiz,
-   isModalOpen:false
+    sampleQuiz: {
+      quizName: 'Sample Quiz',
+      questionAnswers: [
+        { question: 'Sample Question 1', answer: 'Sample Answer 1' },
+        { question: 'Sample Question 2', answer: 'Sample Answer 2' },
+      ],
+    },
+    existingQuizData: {
+      ...this.quiz,
+      questionAnswers:[]
+    },
+   isModalOpen:false,
   }
 },
   components:{EditQuiz},
   props: {
-    quiz: Object,
+    quiz: Object
   },
   methods: {
     openModal() {
@@ -45,14 +52,14 @@ export default {
       this.isModalOpen = false;
     },
     submitEdit(formData) {
-      
+      this.questionAnswers = this.quizData;
       quizService.editQuiz(formData).then((response)=>{
         console.log("edit quiz successful"+response);
         this.closeModal();
-        window.location.reload();
+        // window.location.reload();
       }).catch((error) => {
       // Handle any errors that occur during the Axios request
-      console.error('Error editing Quiz', formData, error);
+      console.error('Error editing Quiz', formData, error, this.quizData);
     });
     },
     deleteQuiz(quiz) {
@@ -82,9 +89,34 @@ export default {
      
       // Set the quiz you want to edit
       this.editingQuiz = JSON.parse(JSON.stringify(quiz));
+      
+      console.log('Original quiz object:', quiz);
+      console.log('Original quiz questions:', this.quizData);
+      console.log('Copied editingQuiz object:', this.existingQuizData);
 // Make a copy of the quiz data
+
+
+      this.formData = {
+        quiz: this.quiz,
+        questionAnswers: this.quizData, // Assuming questionAnswers is an array in your quiz
+      };
+    
+
     },
   }, 
+  created() {
+  
+    // Fetch the quiz data using Axios
+    quizService.getQuestionsByQuizId(this.quiz.quizId) // Replace with the actual API endpoint
+      .then((response) => {
+        this.quizData = response.data; // Set the fetched quiz data
+        console.log(this.quizData)
+        this.questionAnswers = this.quizData;
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error);
+      });
+  },
 };
 </script>
 

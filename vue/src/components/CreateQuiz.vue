@@ -26,9 +26,7 @@
 <script>
 import quizService from '../services/QuizService';
 export default {
-  props:{
-    quiz: Object
-  },
+
   data() {
     return {
       quizName: '',
