@@ -1,7 +1,12 @@
 <template>
   <div class="home">
-    <h1>Welcome To Quizzical!</h1>
-    <p>Browse Categories to Select a Quiz</p>
+    <h1 v-if="user.username">Welcome To Quizzical, {{ user.username.toUpperCase() }}!
+      <p> Browse Categories to Select a Quiz or Create your Own Custom Quiz </p>
+    </h1>
+    <h1 v-else>Welcome To Quizzical!
+      <p>Browse Categories to Select a Quiz or Create a Custom Quiz (requires login)</p>
+      </h1> 
+   
 
     <router-link class="link"
   :to="getQuizListRoute(category.categoryId, user.id)"
@@ -29,7 +34,8 @@ export default {
     return {
       category: '',
       categories: [],
-      user:{}
+      user: this.$store.state.user || {},
+      username: this.$store.state.user.username || ""
     };
   },
   methods: {
@@ -44,7 +50,11 @@ export default {
    }
   },
   computed:{
-     ...mapState('user',['Id'])
+    
+     ...mapState('user',['Id']),
+     caseUsername() {
+     return this.username.toUpperCase();
+  }
   },
   created() {
     CategoryService.getCategories().then((response) => {
