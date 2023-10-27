@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Select Quiz</h1>
+    <h1>\\GET QUIZZICAL//</h1>
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
 
     <div  v-if="routeParamsCheck">
@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import quizList from "../components/QuizList.vue";
+import quizList from "../components/QuizList";
 import quizService from "../services/QuizService";
-import createQuiz from "../components/CreateQuiz.vue"
+import createQuiz from "../components/CreateQuiz"
 export default {
   components: { quizList, createQuiz },
   data() {

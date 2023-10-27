@@ -13,7 +13,8 @@
   v-for="category in categories"
   :key="category.categoryId"
 >
-  <category :category="category" />
+  <!-- <category @show-alert="showAlert" :category="category" /> trying to conditionally show login alert -->
+  <category  :category="category" />
 </router-link>
 
 
@@ -32,6 +33,7 @@ export default {
   name: 'home',
   data() {
     return {
+      
       category: '',
       categories: [],
       user: this.$store.state.user || {},
@@ -39,6 +41,14 @@ export default {
     };
   },
   methods: {
+    // showAlert(){
+    //   console.log("reached show alert")
+    //   if (confirm(" requires login")){
+    //     return ''
+    //   }else{
+    //       this.$router.push('/logout')
+    //   }
+    // },
   getQuizListRoute(categoryId, id) {
     if (categoryId === 6) {
       // If categoryId is 6, navigate to "userQuizList" with user.userId

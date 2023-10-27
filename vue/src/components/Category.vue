@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-<h1>{{ category.categoryName }}</h1>
+<h1><div @click="emitAlert">{{ category.categoryName }}</div></h1>
   </div>
 </template>
 
@@ -9,7 +9,12 @@ export default {
  name:'category',
  props:{
   category:Object
- }
+ },
+ methods: {
+    emitAlert() {
+      this.$emit('show-alert');
+    },
+  },
 }
 </script>
 
