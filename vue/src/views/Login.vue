@@ -1,5 +1,6 @@
 <template>
   <div id="login">
+    <div class="form-container">
     <form @submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
@@ -9,17 +10,18 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <label for="username">Username:</label>
+        <input class="input" type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <label for="password">Password:</label>
+        <input class="input" type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button class="sign-in" type="submit">Sign in</button>
       <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link class="route"  :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
+  </div>
   </div>
 </template>
 
@@ -63,6 +65,36 @@ export default {
 </script>
 
 <style scoped>
+.input{
+  background-color: transparent;
+  border: .5px dashed white;
+}
+.sign-in{
+  /* margin-left: 10rem; */
+  border:none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+h1{
+  font-size: 2rem;
+}
+h1, p .route, .form-container, .input, .sign-in{
+  /* font-size:1rem; */
+  background-color: transparent;
+  color:white;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+}
+.form-container{
+  margin-top: 8rem;
+ display: flex;
+ align-items: center;
+  justify-content: center;
+}
+
+#login{
+  height: 100vh;
+}
 .form-input-group {
   margin-bottom: 1rem;
 }

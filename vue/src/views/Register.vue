@@ -1,25 +1,27 @@
 <template>
   <div id="register" class="text-center">
+    <div class="form-container">
     <form @submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <label for="username">Username:</label>
+        <input class="input" type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <label for="password">Password: </label>
+        <input class="input" type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <label for="confirmPassword">Confirm Password:</label>
+        <input class="input" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <button class="register" type="submit">Create Account</button>
+      <p><router-link class="route" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
+  </div>
   </div>
 </template>
 
@@ -75,6 +77,38 @@ export default {
 </script>
 
 <style scoped>
+.input{
+  background-color: transparent;
+  border: .5px dashed white;
+
+}
+.register{
+  /* margin-left: 10rem; */
+  border:none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+h1{
+  font-size: 2rem;
+}
+h1, p .route, .form-container, .input, .register{
+  /* font-size:1rem; */
+  background-color: transparent;
+  color:white;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+}
+
+#register{
+  height: 100vh;
+}
+.form-container{
+  margin-top: 8rem;
+ display: flex;
+ align-items: center;
+  justify-content: center;
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }

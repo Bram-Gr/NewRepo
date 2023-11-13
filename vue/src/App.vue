@@ -35,6 +35,11 @@ export default {
 }
 </script>
 <style scoped>
+
+#app {
+  height: 100%;
+  /* Other styles */
+}
 .back:hover{
    cursor: pointer;
 }
@@ -43,8 +48,8 @@ export default {
   position: absolute;
   top: 2.3rem
 } */
-.nav-button{
+.nav-button, .back{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quizzes">
     <h1>\\GET QUIZZICAL//</h1>
     <quiz-list v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
 
@@ -80,4 +80,7 @@ export default {
 </script>
 
 <style>
+.quizzes{
+ height: 100vh;
+}
 </style>
