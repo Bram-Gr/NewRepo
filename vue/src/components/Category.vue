@@ -20,21 +20,20 @@ export default {
 
 <style>
 h1{
-  color:black;
-
+  color:white;
+  margin-left: 1.5rem;
 }
 .card {
-    width: 200px;
-    padding: 16px;
-    background-color: beige;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-    margin: 16px;
+  border-radius: 52px;
+border-left: 4px solid #FFF;
+
+background: rgba(255, 253, 253, 0.00);
+
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
   
   .card:hover {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); */
+    font-family: 'Permanent Marker', cursive;
   }
 </style>

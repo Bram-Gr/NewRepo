@@ -123,8 +123,10 @@ export default {
 <style>
 .quiz-box {
   display: flex;
-  border: 1px solid black;
+  margin-top:4rem;
+  /* border: 1px solid black; */
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 /* Style for the red box */
 .delete {
