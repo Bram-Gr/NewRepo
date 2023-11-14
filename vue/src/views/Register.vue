@@ -73,6 +73,9 @@ export default {
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
   },
+  created(){
+    window.scrollTo(0, 0);
+  }
 };
 </script>
 

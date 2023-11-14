@@ -78,24 +78,27 @@ export default {
       console.error(error);
     }
   },
+  created(){
+    window.scrollTo(0, 0);
+  }
 };
 </script>
 
-<style>
-
+<style scoped>
+h1{
+  display: flex;
+  justify-content: center;
+}
 .quiz-list{
 
   border-radius: 52px;
 border-left: 4px solid #FFF;
 
 background: rgba(255, 253, 253, 0.00);
-
+font-family: 'Permanent Marker', cursive;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.quiz-list:hover {
-    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4); */
-    font-family: 'Permanent Marker', cursive;
-  }
+
 .quiz-page{
   margin: 5rem;
 

@@ -27,7 +27,7 @@
 <div class="categories">
     <router-link class="link"
   :to="getQuizListRoute(category.categoryId, user.id)"
-  v-for="category in categories"
+  v-for="category in categories.slice().reverse()"
   :key="category.categoryId"
 >
   <!-- <category v-if="category.categoryId === 6" @show-alert="showAlert" :category="category" />
@@ -81,7 +81,10 @@ export default {
       return this.username.toUpperCase();
     },
   },
-  created() {
+  mounted() {
+   
+    window.scrollTo(0, 0);
+  
     CategoryService.getCategories().then((response) => {
       this.categories = response.data;
     });

@@ -7,6 +7,8 @@ export default {
   created() {
     this.$store.commit("LOGOUT");
     this.$router.push("/");
+    window.scrollTo(0, 0);
+  
   }
 };
 </script>

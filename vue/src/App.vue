@@ -25,6 +25,7 @@
 </template>
 <script>
 export default {
+  
   data() {
     return {};
   },
@@ -43,7 +44,7 @@ export default {
     displayLogin() {
       return this.$route.path === "/";
     },
-  },
+  }
 };
 </script>
 <style scoped>

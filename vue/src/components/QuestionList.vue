@@ -12,7 +12,7 @@
   <script>
   export default {
     props: {
-      question: Object // Assuming your question is an object with a "question" and "answer" property
+      question: Object 
     },
     data() {
       return {
