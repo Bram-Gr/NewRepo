@@ -2,10 +2,10 @@
   <div class="quiz-page">
   <div class="quizzes">
     <h1>GET QUIZZICAL</h1>
-    <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in uniqueQuizzes" :key="index" :quiz="uniqueQuiz" />
+    <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes" :key="index" :quiz="uniqueQuiz" />
 
     <div  v-if="routeParamsCheck">
-    <button @click="openModal">Create Quiz</button>
+    <button  @click="openModal">Create Quiz</button>
     <create-quiz v-if="isModalOpen" @click="closeModal" @closeModal="closeModal"/>
    </div>
   
@@ -85,13 +85,13 @@ export default {
 </script>
 
 <style scoped>
+
 h1{
   display: flex;
   justify-content: center;
 }
 .quiz-list{
-
-  border-radius: 52px;
+border-radius: 52px;
 border-left: 4px solid #FFF;
 
 background: rgba(255, 253, 253, 0.00);
@@ -105,6 +105,5 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .quizzes{
  height: 100vh;
-
 }
 </style>

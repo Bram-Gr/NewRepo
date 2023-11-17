@@ -1,13 +1,14 @@
 <template>
-  <div class="quiz">
+  <div class="quiz-page">
 <h1 class="name">{{ quizName }}</h1>
-
+    <div class="quiz">
     <question v-for="(question, index) in questions" :key="index" :question="question"/>
+  </div>
   </div>
 </template>
 
 <script>
-import question from '../components/QuestionList.vue'
+import question from '../components/QuestionList';
 import quizService from '../services/QuizService';
 export default {
 components:{question},
@@ -40,12 +41,20 @@ data(){
 }
 </script>
 
-<style>
+<style scoped>
+.quiz{
+  margin-top:6rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom:4rem;
+}
 .name{
   display: flex;
   justify-content: center;
 }
-.quiz{
+.quiz-page{
   height:100vh;
   margin:4rem;
 }

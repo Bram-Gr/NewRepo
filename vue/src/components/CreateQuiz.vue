@@ -1,12 +1,10 @@
 <template>
-
-    <!-- Modal content goes here -->
-    <div class="modal-content">
-      <form @submit="submitQuiz">
+    <div>
+      <form class="modal" @submit="submitQuiz">
         <label for="quizName">Quiz Name:</label>
         <textarea  class="input" id="quizName" v-model="quizName" required/>
 
-        <div v-for="(question, index) in questions" :key="index">
+        <div class="questions" v-for="(question, index) in questions" :key="index">
           <label>Question {{ index + 1 }}:</label>
           <textarea class="input" v-model="questions[index].question" required/>
           <label>  Answer {{ index + 1 }}:</label>
@@ -74,9 +72,14 @@ export default {
 
 
 <style scoped>
-
-.modal {
-  
+.modal-content{
+  background: border-box;
+  border:1px solid black;
+  height:10px;
+}
+.modal{
+  height:150px;
+  overflow-y: scroll;
 }
 .input{
   margin-left: 1rem;

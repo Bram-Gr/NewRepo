@@ -1,6 +1,6 @@
 <template>
   <div class="QuizTitleCard">
-    <router-link :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }">
+    <router-link class="link" :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }">
       <div class="quiz-box">
         <h1>{{ quiz.quizName }}</h1>
 
@@ -121,6 +121,9 @@ export default {
 </script>
 
 <style>
+.link{
+  text-decoration: none;
+}
 .quiz-box {
   display: flex;
   margin-top:4rem;
