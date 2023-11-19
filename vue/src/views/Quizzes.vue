@@ -1,14 +1,23 @@
 <template>
-  <div class="quiz-page">
+  <div class="quiz-page-main">
   <div class="quizzes">
     <h1>GET QUIZZICAL</h1>
-    <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes" :key="index" :quiz="uniqueQuiz" />
-
-    <div  v-if="routeParamsCheck">
-    <button  @click="openModal">Create Quiz</button>
+    <div class="quiz-page">
+      <div  class="create-form" v-if="routeParamsCheck">
+    <button class="create-button" @click="openModal">Create Quiz</button>
     <create-quiz v-if="isModalOpen" @click="closeModal" @closeModal="closeModal"/>
-   </div>
+  </div>
+
+  <div  v-if="routeParamsCheck" class="quizzes-list">
+    <h1 class="user-q" >{{ name.toUpperCase() }}'S QUIZZES</h1>
+    <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes.slice().reverse()" :key="index" :quiz="uniqueQuiz" />  
+  </div>
+
+  <div class="q-quiz" v-else>
+    <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes" :key="index" :quiz="uniqueQuiz" />  
+  </div>
   
+   </div>  
   </div>
 </div>
 </template>
@@ -23,7 +32,8 @@ export default {
     return {
       quiz: {},
       quizzes: [],
-      isModalOpen: false
+      isModalOpen: false,
+      name:this.$store.state.user.username
     };
   },
   methods: {
@@ -85,12 +95,36 @@ export default {
 </script>
 
 <style scoped>
-
+.q-quiz{
+  display: flex;
+  flex-wrap: wrap;
+}
+.create-form{  
+flex-wrap: wrap;
+margin-left:2rem;
+}
 h1{
   display: flex;
   justify-content: center;
 }
+.create-button{
+  margin-top:1.26rem;
+}
+.create-button, .user-q{
+  font-weight:bold;
+  color: white;
+  background: none;
+  border: none;
+  font-family: 'Permanent Marker', cursive;
+  cursor: pointer;
+  font-size: 2rem;
+  text-decoration: underline;
+}
 .quiz-list{
+  margin-top:2rem;
+  padding-right:2rem;
+  margin-left:2rem;
+flex-wrap:wrap;
 border-radius: 52px;
 border-left: 4px solid #FFF;
 
@@ -98,10 +132,15 @@ background: rgba(255, 253, 253, 0.00);
 font-family: 'Permanent Marker', cursive;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
+.quiz-page-main{
+  margin-top:8rem;
+}
 .quiz-page{
-  margin: 5rem;
-
+  display:flex;
+  flex-wrap: wrap;
+  margin-top:2rem;
+  /* margin: 5rem; */
+  justify-content: center;
 }
 .quizzes{
  height: 100vh;

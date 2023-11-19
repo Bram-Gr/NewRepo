@@ -94,24 +94,36 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 150px){
+  .home{
+    margin-top:2rem;
+    padding:2rem;
+  }
+  h1,p,.title,.link{
+    color:white;
+    font-size:1rem;   
+  }
+  .link{
+    font-size: .5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+@media screen and (min-width: 658px){
 
 .title {
   font-size: 3rem;
 }
 h1,
-p {
+p,.link {
   font-size: 1.5rem;
 }
 .home {
-  padding: 4rem;
-  margin: 2rem;
+  margin:2rem;
   color: white;
 }
 .categories{
   margin-top:3rem;
 }
-.link {
-  text-decoration: none;
-  text-transform: uppercase;
 }
 </style>

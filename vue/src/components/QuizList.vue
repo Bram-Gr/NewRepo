@@ -1,14 +1,11 @@
 <template>
+<!-- should be called QuizCard.vue, note for refactor -->
   <div class="QuizTitleCard">
     <router-link class="link" :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }">
       <div class="quiz-box">
-        <h1>{{ quiz.quizName }}</h1>
+        <h1 class="name">{{ quiz.quizName }}</h1>
 
-        <button
-          class="delete"
-          @click="deleteQuiz(quiz)"
-          v-if="quiz.categoryId === 6"
-        ></button>
+       
 
         <button @click="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
 
@@ -62,26 +59,7 @@ export default {
       console.error('Error editing Quiz', formData, error, this.quizData);
     });
     },
-    deleteQuiz(quiz) {
-      const userConfirm = confirm(
-        "Would you like to delete " + quiz.quizName + "?"
-      );
-      if (userConfirm) {
-        event.preventDefault();
-        window.location.reload();
-        quizService
-          .deleteQuiz(quiz.quizId)
 
-          .then((response) => {
-            console.log("Quiz created successfully", response);
-          })
-          .catch((error) => {
-            console.error("Error Submitting Quiz", error);
-          });
-      } else {
-        event.preventDefault();
-      }
-    },
     editQuiz(quiz) {
       this.isModalOpen = true;
       event.preventDefault();
@@ -120,40 +98,28 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  button{
+    font-size: 2rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  }
+.name{
+  margin-top:1.4rem;
+}
 .link{
   text-decoration: none;
 }
 .quiz-box {
   display: flex;
-  margin-top:4rem;
+  margin-top:1rem;
   /* border: 1px solid black; */
   margin-bottom: 1rem;
   text-decoration: none;
 }
 /* Style for the red box */
-.delete {
-  display: flex;
-  align-self: center;
-  height: 1rem;
-  margin-left: 3rem;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  position: relative;
-  border-radius: 5px;
-}
-
-/* Style for the white "x" inside the red box */
-.delete::before {
-  content: "✕"; /* Unicode for the "x" character */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  line-height: 0;
-}
 </style>

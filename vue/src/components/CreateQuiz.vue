@@ -5,17 +5,18 @@
         <textarea  class="input" id="quizName" v-model="quizName" required/>
 
         <div class="questions" v-for="(question, index) in questions" :key="index">
-          <label>Question {{ index + 1 }}:</label>
-          <textarea class="input" v-model="questions[index].question" required/>
-          <label>  Answer {{ index + 1 }}:</label>
-          <textarea class="input" v-model="questions[index].answer" required/>
-          <button type="button" @click="addQuestion">Add Question</button>
+          <label>Question:</label>
+          <textarea class="input" v-model="questions[index].question" required/>&nbsp;&nbsp;&nbsp;&nbsp;
+          <label>  Answer:</label>
+          <textarea class="input" v-model="questions[index].answer" required/>         
         <button type="button" @click="removeQuestion(index)">Remove Question</button>
         </div>
 
-      
+      <div class="bottom-buttons">
+        <button type="button" @click="addQuestion">Add Question</button>
         <button type="submit">Save</button>
         <button @click="closeModal">Close</button>
+      </div> 
       </form>
     </div>
 
@@ -72,25 +73,36 @@ export default {
 
 
 <style scoped>
-.modal-content{
-  background: border-box;
-  border:1px solid black;
-  height:10px;
+
+.questions{
+  margin-top:.4rem;
+  display: flex;
+  flex-wrap: wrap;
 }
-.modal{
+label{
+  color: #ffffff;
+  font-size:1.4rem;
+}
+/* .modal{
   height:150px;
   overflow-y: scroll;
-}
+} */
 .input{
+  font-weight:bold;
+  color: white;
+  font-size: 1.2rem;
   margin-left: 1rem;
   margin-top:.2rem;
+  background-color: transparent;
+  border: 1px dashed white;
 }
 h2 {
   font-size: 1.5rem;
 }
 
 button {
-  background-color: #007bff;
+  font-size: 1rem;
+  background-color: transparent;
   color: white;
   border: none;
   padding: 10px 20px;
