@@ -23,6 +23,7 @@
 </template>
 
 <script>
+
 import quizList from "../components/QuizList";
 import quizService from "../services/QuizService";
 import createQuiz from "../components/CreateQuiz"
@@ -37,6 +38,10 @@ export default {
     };
   },
   methods: {
+    // updateBackgroundSize() {
+    //   const containerHeight = document.getElementById('app-container').offsetHeight;
+    //   document.body.style.backgroundSize = `100% 100% ${containerHeight}px`;
+    // },
     openModal() {
       this.isModalOpen = true; // Open the modal
     },
@@ -65,6 +70,10 @@ export default {
     }
   },
   mounted() {
+    // this.updateBackgroundSize();
+
+    // // Call the function whenever the window is resized
+    // window.addEventListener('resize', this.updateBackgroundSize);
     try {
       const routeParams = this.$route.params;
 
@@ -72,13 +81,11 @@ export default {
         // If userId is in routeParams, use getQuizzesByUserId
         quizService.getQuizzesByUserId(routeParams.id).then((response) => {
           this.quizzes = response.data;
-          console.log(response.data);
         });
       } else if ('categoryId' in routeParams) {
         // If categoryId is in routeParams, use getQuizzesByCategoryId
         quizService.getQuizzesByCategoryId(routeParams.categoryId).then((response) => {
           this.quizzes = response.data;
-          console.log(response.data);
         });
       } else {
         // Handle the case where neither userId nor categoryId is present
@@ -115,7 +122,6 @@ h1{
   color: white;
   background: none;
   border: none;
-  font-family: 'Permanent Marker', cursive;
   cursor: pointer;
   font-size: 2rem;
   text-decoration: underline;
@@ -125,11 +131,10 @@ h1{
   padding-right:2rem;
   margin-left:2rem;
 flex-wrap:wrap;
-border-radius: 52px;
-border-left: 4px solid #FFF;
+
+border: 4px solid #FFF;
 
 background: rgba(255, 253, 253, 0.00);
-font-family: 'Permanent Marker', cursive;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .quiz-page-main{

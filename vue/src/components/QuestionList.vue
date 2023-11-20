@@ -29,7 +29,7 @@
   
   <style scoped>
   .quiz-card {
-  
+    color: black;
     width: 200px;
     padding: 16px;
     background-color: beige;

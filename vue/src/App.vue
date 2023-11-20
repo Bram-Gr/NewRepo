@@ -1,69 +1,31 @@
 <template>
   <div id="app">
     <div id="nav">
-      <a class="back" v-if="displayBackButton" @click="goBack">Back | </a>
-      <router-link class="nav-button" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >
-      <router-link
-        class="nav-button"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != '' && displayLogout"
-      >
-        | Logout</router-link
-      >
-      <router-link
-        class="nav-button"
-        v-bind:to="{ name: 'login' }"
-        v-else-if="displayLogin"
-      >
-        | Login</router-link
-      >
-    </div>
+  <nav-bar />
+  </div>  
     <router-view />
   </div>
 </template>
 <script>
+import navBar from "./components/NavBar"
 export default {
-  
+  components: {navBar},
   data() {
-    return {};
-  },
-  methods: {
-    goBack() {
-      this.$router.back();
-    },
-  },
-  computed: {
-    displayBackButton() {
-      return this.$route.path !== "/";
-    },
-    displayLogout() {
-      return this.$route.path === "/";
-    },
-    displayLogin() {
-      return this.$route.path === "/";
-    },
+    return {
+     
+    };
   }
+
 };
 </script>
-<style scoped>
+<style >
+
+#nav{
+ display: inline-block;
+}
 #app {
-  height: 100%;
+  height: 100vh;
   /* Other styles */
 }
-.back:hover {
-  cursor: pointer;
-}
-/* .back:hover::before{
-  content: "Back"; will position the word Back under the icon when switching to icons.
-  position: absolute;
-  top: 2.3rem
-} */
-.nav-button,
-.back {
-  text-decoration: none;
-  color: white;
-  font-size: 2rem;
-}
+
 </style>

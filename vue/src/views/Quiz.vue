@@ -55,7 +55,8 @@ data(){
   justify-content: center;
 }
 .quiz-page{
+  margin-top:8rem;
   height:100vh;
-  margin:4rem;
+  /* margin:4rem; */
 }
 </style>

@@ -41,6 +41,7 @@
 </template>
 
 <script>
+
 import { mapState } from "vuex";
 import CategoryService from "../services/CategoryService";
 import Category from "../components/Category";
@@ -95,13 +96,26 @@ export default {
 
 <style scoped>
 @media screen and (min-width: 150px){
-  .home{
-    margin-top:2rem;
-    padding:2rem;
+ .categories{
+  margin-right:2.7rem;
+  margin-top: 4rem;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+ }
+  h1,p{
+    color:black;
+    font-size:1rem;  
+    padding:2rem; 
   }
-  h1,p,.title,.link{
-    color:white;
-    font-size:1rem;   
+  .title{
+    margin-top:8rem;
+    color: black;
+   display: inline-block;
+   /* width: 100vw; */
+   background-color:white;
+  
   }
   .link{
     font-size: .5rem;
@@ -109,6 +123,12 @@ export default {
     text-transform: uppercase;
   }
 }
+/* @media screen and (min-width: 244px){
+  h1,p,.title{
+    color:white;
+    font-size:2rem;   
+  }
+} */
 @media screen and (min-width: 658px){
 
 .title {
@@ -119,11 +139,9 @@ p,.link {
   font-size: 1.5rem;
 }
 .home {
-  margin:2rem;
+
   color: white;
 }
-.categories{
-  margin-top:3rem;
-}
+
 }
 </style>

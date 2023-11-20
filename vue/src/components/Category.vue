@@ -20,16 +20,22 @@ export default {
 
 <style>
 h1{
+  
+  display: flex;
+  justify-self: center;
+  align-self: center;
   color:white;
-  margin-left: 1.5rem;
+  padding: .3rem;
 }
 .card {
-  border-radius: 52px;
-border-left: 4px solid #FFF;
-
-background: rgba(255, 253, 253, 0.00);
-font-family: 'Permanent Marker', cursive;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top:1rem;
+  height: 10rem;
+  margin-left:1rem;
+  display: flex;
+  flex-wrap: wrap;
+width:20rem;
+border: 4px solid #FFF;
+background: transparent;
   }
   
 
