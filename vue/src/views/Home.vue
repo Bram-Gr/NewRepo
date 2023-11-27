@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <div class="title" v-if="user.username">Welcome To Quizzical, {{ user.username.toUpperCase() }}!
+    <div class="title">
+
+      <h1 class="Quizzical">QUIZZICAL</h1>
+      <p>A note card quiz app</p>
+    </div>
+    <!-- <div class="title" v-if="user.username">Welcome To Quizzical, {{ user.username.toUpperCase() }}!
       <p> Browse Categories to Select a Quiz or Create your Own Custom Quiz 
         Browse categories or create and account to make your own note card quizzes!
        <br><br> Road map
@@ -10,8 +15,8 @@
 <li>Currently working on game logic to bolster user engagement.</li>
 </ul>
       </p>
-    </div>
-    <div class="title" v-else>Welcome To Quizzical!
+    </div> -->
+    <!-- <div class="title" v-else>Welcome To Quizzical!
       <p>Browse Categories to Select a Quiz or Create a Custom Quiz (requires login)
         Browse categories or create and account to make your own note card quizzes!
 
@@ -22,7 +27,7 @@
 <li>Currently working on game logic to bolster user engagement.</li>
 </ul>
       </p>
-      </div> 
+      </div>  -->
    
 <div class="categories">
     <router-link class="link"
@@ -96,6 +101,25 @@ export default {
 
 <style scoped>
 @media screen and (min-width: 150px){
+  p{
+    position: relative;
+      font-size: 24px;
+      overflow: hidden;
+      display: inline-block;
+    display: flex;
+    justify-content: center;
+  }
+  .Quizzical{
+    position: relative;
+      font-size: 24px;
+      overflow: hidden;
+      display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     font-size: 4rem;
+  }
+
  .categories{
   margin-right:2.7rem;
   margin-top: 4rem;
@@ -104,17 +128,20 @@ export default {
   flex-wrap: wrap;
 
  }
-  h1,p{
+  /* h1,p{
     color:black;
     font-size:1rem;  
     padding:2rem; 
-  }
+  } */
   .title{
+    padding: 1rem;
     margin-top:8rem;
-    color: black;
-   display: inline-block;
-   /* width: 100vw; */
-   background-color:white;
+    color: white;
+   /* display: inline-block; */
+   /* width: 100%; */
+   background-image: url("../assets/bg2.webp");
+   background-repeat: no-repeat; /* Prevent image from repeating */
+  background-size: cover;
   
   }
   .link{
@@ -123,12 +150,12 @@ export default {
     text-transform: uppercase;
   }
 }
-/* @media screen and (min-width: 244px){
-  h1,p,.title{
+@media screen and (min-width: 244px){
+  /* h1,p,.title{
     color:white;
     font-size:2rem;   
-  }
-} */
+  } */
+}
 @media screen and (min-width: 658px){
 
 .title {

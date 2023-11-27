@@ -1,7 +1,9 @@
 <template>
+  
   <div class="card">
-<h1><div @click="emitAlert">{{ category.categoryName }}</div></h1>
+<h1 class="category-name"><div  @click="emitAlert">{{ category.categoryName }}</div></h1>
   </div>
+
 </template>
 
 <script>
@@ -19,23 +21,22 @@ export default {
 </script>
 
 <style>
-h1{
-  
-  display: flex;
-  justify-self: center;
-  align-self: center;
+
+.category-name{
   color:white;
   padding: .3rem;
 }
 .card {
+  text-align: center;
   margin-top:1rem;
   height: 10rem;
   margin-left:1rem;
   display: flex;
-  flex-wrap: wrap;
+justify-content: center;
+align-items:center;
 width:20rem;
-border: 4px solid #FFF;
-background: transparent;
+background: linear-gradient(to bottom, #4a148c, #311b92);
+border-radius: 10px;
   }
   
 

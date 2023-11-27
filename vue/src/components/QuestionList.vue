@@ -4,8 +4,8 @@
       @click="toggleAnswer"
       :class="{ 'show-answer': isAnswerVisible }"
     >
-      <div class="question">{{ question.question }}</div>
-      <div class="answer">{{ question.answer }}</div>
+      <div v-if="!isAnswerVisible" class="question">{{ question.question }}</div>
+      <div v-else class="answer">{{ question.answer }}</div>
     </div>
   </template>
   
@@ -43,22 +43,24 @@
   .quiz-card:hover {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
   }
-  
+
   .question {
+
     font-weight: bold;
     margin-bottom: 8px;
   }
   
   .answer {
+    font-weight: bold;
     display: none;
-    background-color: white;
-    padding: 8px;
-    border: 1px solid #ccc;
+   
+    padding: 2rem;
+    
     margin-top: 8px;
   }
   
   .show-answer .answer {
-    display: block;
+    display: flex;
   }
   </style>
   

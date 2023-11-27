@@ -102,7 +102,11 @@ export default {
 </script>
 
 <style scoped>
+.user-q{
+  color:white;
+}
 .q-quiz{
+  color: white;
   display: flex;
   flex-wrap: wrap;
 }
@@ -111,6 +115,7 @@ flex-wrap: wrap;
 margin-left:2rem;
 }
 h1{
+  color:white;
   display: flex;
   justify-content: center;
 }
@@ -128,19 +133,22 @@ h1{
 }
 .quiz-list{
   margin-top:2rem;
-  padding-right:2rem;
+  padding:.5rem;
   margin-left:2rem;
-flex-wrap:wrap;
-
-border: 4px solid #FFF;
-
-background: rgba(255, 253, 253, 0.00);
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+/* flex-wrap:wrap;
+display:flex;
+justify-content: center;
+align-items: center; */
+/* border: 4px solid #FFF; */
+color: white;
+/* background: rgba(255, 253, 253, 0.00);
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
 .quiz-page-main{
   margin-top:8rem;
 }
 .quiz-page{
+  color: white;
   display:flex;
   flex-wrap: wrap;
   margin-top:2rem;

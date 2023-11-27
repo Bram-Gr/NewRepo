@@ -83,10 +83,12 @@ label{
   color: #ffffff;
   font-size:1.4rem;
 }
-/* .modal{
-  height:150px;
-  overflow-y: scroll;
-} */
+.modal{
+  padding:1rem;
+  margin-top:1.5rem;
+  background: linear-gradient(to bottom, #4a148c, #311b92);
+  border-radius: 10px;
+}
 .input{
   font-weight:bold;
   color: white;

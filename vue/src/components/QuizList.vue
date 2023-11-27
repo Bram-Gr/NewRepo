@@ -1,19 +1,31 @@
 <template>
-<!-- should be called QuizCard.vue, note for refactor -->
+  <!-- should be called QuizCard.vue, note for refactor -->
   <div class="QuizTitleCard">
-    <router-link class="link" :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }">
-      <div class="quiz-box">
+    <router-link
+      class="link"
+      :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
+    >
+      <!-- <div class="quiz-box"> -->
         <h1 class="name">{{ quiz.quizName }}</h1>
 
-       
-
-        <button @click="editQuiz(existingQuizData)"   v-if="quiz.categoryId === 6">Edit Quiz</button>
-
-
-      </div>
-
+    
+          <button
+            v-show="editButton"
+            @click="editQuiz(existingQuizData)"
+            v-if="quiz.categoryId === 6"
+          >
+            Edit Quiz
+          </button>
+     
+      <!-- </div> -->
     </router-link>
-    <edit-quiz v-if="isModalOpen" :quizData="this.quizData" :quiz="this.quiz" :submitFunction="submitEdit" @closeModal="closeModal"  />
+    <edit-quiz
+      v-if="isModalOpen"
+      :quizData="this.quizData"
+      :quiz="this.quiz"
+      :submitFunction="submitEdit"
+      @closeModal="closeModal"
+    />
   </div>
 </template>
 
@@ -21,25 +33,26 @@
 import EditQuiz from "./EditQuiz.vue";
 import quizService from "../services/QuizService";
 export default {
-  data(){
-  return{
-    sampleQuiz: {
-      quizName: 'Sample Quiz',
-      questionAnswers: [
-        { question: 'Sample Question 1', answer: 'Sample Answer 1' },
-        { question: 'Sample Question 2', answer: 'Sample Answer 2' },
-      ],
-    },
-    existingQuizData: {
-      ...this.quiz,
-      questionAnswers:[]
-    },
-   isModalOpen:false,
-  }
-},
-  components:{EditQuiz},
+  data() {
+    return {
+      sampleQuiz: {
+        quizName: "Sample Quiz",
+        questionAnswers: [
+          { question: "Sample Question 1", answer: "Sample Answer 1" },
+          { question: "Sample Question 2", answer: "Sample Answer 2" },
+        ],
+      },
+      existingQuizData: {
+        ...this.quiz,
+        questionAnswers: [],
+      },
+      isModalOpen: false,
+      editButton: true,
+    };
+  },
+  components: { EditQuiz },
   props: {
-    quiz: Object
+    quiz: Object,
   },
   methods: {
     openModal() {
@@ -47,76 +60,92 @@ export default {
     },
     closeModal() {
       this.isModalOpen = false;
+      this.editButton = true;
     },
     submitEdit(formData) {
       this.questionAnswers = this.quizData;
-      quizService.editQuiz(formData).then((response)=>{
-        console.log("edit quiz successful"+response);
-        this.closeModal();
-        // window.location.reload();
-      }).catch((error) => {
-      // Handle any errors that occur during the Axios request
-      console.error('Error editing Quiz', formData, error, this.quizData);
-    });
+      quizService
+        .editQuiz(formData)
+        .then((response) => {
+          console.log("edit quiz successful" + response);
+          this.closeModal();
+          // window.location.reload();
+        })
+        .catch((error) => {
+          // Handle any errors that occur during the Axios request
+          console.error("Error editing Quiz", formData, error, this.quizData);
+        });
     },
 
     editQuiz(quiz) {
       this.isModalOpen = true;
+      this.editButton = false;
       event.preventDefault();
- 
-     
+
       // Set the quiz you want to edit
       this.editingQuiz = JSON.parse(JSON.stringify(quiz));
-      
-      console.log('Original quiz object:', quiz);
-      console.log('Original quiz questions:', this.quizData);
-      console.log('Copied editingQuiz object:', this.existingQuizData);
-// Make a copy of the quiz data
 
+      console.log("Original quiz object:", quiz);
+      console.log("Original quiz questions:", this.quizData);
+      console.log("Copied editingQuiz object:", this.existingQuizData);
+      // Make a copy of the quiz data
 
       this.formData = {
         quiz: this.quiz,
         questionAnswers: this.quizData, // Assuming questionAnswers is an array in your quiz
       };
-    
-
     },
-  }, 
+  },
   created() {
-  
     // Fetch the quiz data using Axios
-    quizService.getQuestionsByQuizId(this.quiz.quizId) // Replace with the actual API endpoint
+    quizService
+      .getQuestionsByQuizId(this.quiz.quizId) // Replace with the actual API endpoint
       .then((response) => {
         this.quizData = response.data; // Set the fetched quiz data
-        console.log(this.quizData)
+        console.log(this.quizData);
         this.questionAnswers = this.quizData;
       })
       .catch((error) => {
-        console.error('Error fetching quiz data:', error);
+        console.error("Error fetching quiz data:", error);
       });
   },
 };
 </script>
 
 <style scoped>
-  button{
-    font-size: 2rem;
+/* .edit-button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+} */
+.QuizTitleCard {
+  background: linear-gradient(to bottom, #4a148c, #311b92);
+  border-radius: 10px;
+}
+button {
+  margin-left:9rem;
+  position:relative;
+  /* text-align: right; */
+  top: 16px;
+  font-size: .8rem;
   background-color: transparent;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
-  }
-.name{
-  margin-top:1.4rem;
 }
-.link{
+.name {
+  margin-top: 1.4rem;
+  color: white;
+}
+.link {
   text-decoration: none;
 }
 .quiz-box {
   display: flex;
-  margin-top:1rem;
+  margin-top: 1rem;
   /* border: 1px solid black; */
   margin-bottom: 1rem;
   text-decoration: none;
