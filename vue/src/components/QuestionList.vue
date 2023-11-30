@@ -45,16 +45,15 @@
   }
 
   .question {
-
+    min-height: 6rem;
     font-weight: bold;
     margin-bottom: 8px;
   }
   
   .answer {
     font-weight: bold;
-    display: none;
-   
-    padding: 2rem;
+    min-height: 6rem;
+    padding: .5rem;
     
     margin-top: 8px;
   }

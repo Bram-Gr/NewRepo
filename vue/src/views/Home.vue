@@ -110,10 +110,10 @@ export default {
     justify-content: center;
   }
   .Quizzical{
+  flex-wrap: wrap;
     position: relative;
-      font-size: 24px;
-      overflow: hidden;
-      display: inline-block;
+      font-size: 24px;     
+      /* display: inline-block; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,6 +134,7 @@ export default {
     padding:2rem; 
   } */
   .title{
+    flex-wrap: wrap;
     padding: 1rem;
     margin-top:8rem;
     color: white;

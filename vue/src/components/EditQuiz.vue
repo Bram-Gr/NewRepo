@@ -1,6 +1,6 @@
 <template>
   <div class="modal-content">
-    <form @submit.prevent="submitEdit">
+    <form @submit="submitEdit">
       <label for="quizName">Quiz Name:</label>
       <textarea class="input" id="quizName" v-model="quizName" required />
 

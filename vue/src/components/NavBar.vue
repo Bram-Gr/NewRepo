@@ -82,7 +82,7 @@ export default {
   display: flex;
   flex-direction: row;
   position:fixed;
-
+ flex-wrap: wrap;
 }
 .logo{
   font-size: 2rem;
