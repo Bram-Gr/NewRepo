@@ -1,10 +1,13 @@
 <template>
     <nav id="main" :class="{ onScroll: !view.topOfPage }">
-      <div class="logo">QUIZZICAL</div> &nbsp; &nbsp;
+      <a  v-if="displayBackButton" @click="goBack"></a>
+      <router-link class="logo" v-bind:to="{ name: 'home' }"
+        >QUIZZICAL </router-link
+      >&nbsp;&nbsp;&nbsp;
       <div class="nav-buttons">
       <a class="back" v-if="displayBackButton" @click="goBack">Back | </a>&nbsp;
-      <router-link class="nav-button" v-bind:to="{ name: 'home' }"
-        >Home </router-link
+      <router-link class="nav-button" v-bind:to="{ name: 'select' }"
+        >Select Quiz </router-link
       > &nbsp;
       <router-link
         class="nav-button"
@@ -69,8 +72,11 @@ export default {
 }
 .nav-buttons{
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-right: 0.5rem;
+    padding-top: 0.3rem;
+    position: fixed;
+    right: 0;
 }
 
 #main{
@@ -86,6 +92,7 @@ export default {
 }
 .logo{
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .back:hover {
@@ -97,7 +104,7 @@ export default {
   top: 2.3rem
 } */
 .nav-button,
-.back {
+.back, .logo {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import SelectQuiz from '../views/SelectQuiz.vue'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
@@ -15,6 +16,14 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/select-page',
+      name: 'select',
+      component: SelectQuiz,
+      meta: {
+        requiresAuth: false
+      }
+    },
     {
       path: '/',
       name: 'home',
