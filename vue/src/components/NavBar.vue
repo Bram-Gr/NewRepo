@@ -58,10 +58,10 @@ export default {
       return this.$route.path !== "/";
     },
     displayLogout() {
-      return this.$route.path === "/";
+      return this.$route.path === "/" || "select";
     },
     displayLogin() {
-      return this.$route.path === "/";
+      return this.$route.path === "/" || "select";
     },
   }
 };
