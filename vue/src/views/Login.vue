@@ -17,7 +17,7 @@
         <label for="password">Password:</label>
         <input class="input" type="password" id="password" v-model="user.password" required />
       </div>
-      <button class="sign-in" type="submit">Sign in</button>
+      <button class="sign-in" type="submit">Submit</button>
       <p>
       <router-link class="route"  :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -49,7 +49,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push("/select-page");
           }
         })
         .catch(error => {
@@ -69,34 +69,41 @@ export default {
 
 <style scoped>
 .input{
+  margin-top: .3rem;
   background-color: transparent;
-  border: .5px dashed white;
+  border: .5px solid white;
 }
 .sign-in{
-  /* margin-left: 10rem; */
-  border:none;
+  margin-top: 1rem;
+  margin-left:10rem;
   margin-bottom: 1rem;
   cursor: pointer;
 }
 h1{
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
-h1, p .route, .form-container, .input, .sign-in{
+p .route, .form-container, .input, .sign-in{
   /* font-size:1rem; */
   background-color: transparent;
   color:white;
-  font-family: 'Permanent Marker', cursive;
-  text-decoration: none;
+  font-size: 1.5rem;
 }
 .form-container{
-  margin-top: 8rem;
- display: flex;
+  display: flex;
+  padding:1rem;
+padding-right: 1.5rem;
+padding-left: 1.5rem;
  align-items: center;
   justify-content: center;
+  background: linear-gradient(to bottom, #4a148c, #311b92);
+  margin-top: 8rem;
 }
 
 #login{
-  height: 100vh;
+  margin-top: 4rem;
+  justify-content: center;
+  display: flex;
 }
 .form-input-group {
   margin-bottom: 1rem;

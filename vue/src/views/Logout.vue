@@ -6,7 +6,7 @@
 export default {
   created() {
     this.$store.commit("LOGOUT");
-    this.$router.push("/");
+    this.$router.push("/select-page");
     window.scrollTo(0, 0);
   
   }

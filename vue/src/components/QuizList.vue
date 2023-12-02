@@ -143,12 +143,4 @@ button {
 .link {
   text-decoration: none;
 }
-.quiz-box {
-  display: flex;
-  margin-top: 1rem;
-  /* border: 1px solid black; */
-  margin-bottom: 1rem;
-  text-decoration: none;
-}
-/* Style for the red box */
 </style>

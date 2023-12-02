@@ -18,7 +18,7 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input class="input" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button class="register" type="submit">Create Account</button>
+      <button class="register" type="submit">Submit</button>
       <p><router-link class="route" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -81,35 +81,43 @@ export default {
 
 <style scoped>
 .input{
+  margin-top: .3rem;
   background-color: transparent;
-  border: .5px dashed white;
+  border: .5px solid white;
 
 }
 .register{
-  /* margin-left: 10rem; */
-  border:none;
+  margin-top: 1rem;
+  margin-left:12rem;
   margin-bottom: 1rem;
   cursor: pointer;
 }
 h1{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
 }
-h1, p .route, .form-container, .input, .register{
-  /* font-size:1rem; */
+ p .route, .form-container, .input, .register{
+  
   background-color: transparent;
   color:white;
-  font-family: 'Permanent Marker', cursive;
-  text-decoration: none;
+  font-size: 1.5rem;
 }
 
 #register{
-  height: 100vh;
+  margin-top: 4rem;
+  justify-content: center;
+  display: flex;
 }
 .form-container{
-  margin-top: 8rem;
- display: flex;
+  display: flex;
+  padding:1rem;
+padding-right: 1.5rem;
+padding-left: 1.5rem;
  align-items: center;
   justify-content: center;
+  background: linear-gradient(to bottom, #4a148c, #311b92);
+  margin-top: 8rem;
+ 
 }
 
 .form-input-group {

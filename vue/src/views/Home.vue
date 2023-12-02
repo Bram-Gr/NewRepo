@@ -28,14 +28,14 @@ methods:{
 <style scoped>
 h1{
     font-size: 3rem;
-    padding-top: 3rem;
+    padding-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 p{
-    padding-right:4rem;
-    padding-left: 4rem;
+    padding-right:6rem;
+    padding-left: 6rem;
     font-size: 1.3rem;
 }
 button{

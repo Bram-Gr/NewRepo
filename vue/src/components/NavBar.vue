@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     includedRoutes() {
-      const excludedRouteNames = ['Home', 'Quiz', 'quizList', 'login', 'register'];
+      const excludedRouteNames = ['Home', 'Quiz', 'quizList', 'login', 'register', 'userQuizList'];
       
       return excludedRouteNames.includes(this.$route.name);
     },
@@ -67,13 +67,13 @@ export default {
       return this.$route.path !== "/";
     },
     displayLogout() {
-      const excludedRoutes = ["login", "register", "quizList", "Quiz"];
+      const excludedRoutes = ["login", "register", "quizList", "Quiz", "userQuizList"];
 
 // Check if the current route path is in the excludedRoutes array
 return !excludedRoutes.includes(this.$route.name);
     },
     displayLogin() {
-      const excludedRoutes = ["login", "register", "quizList", "Quiz"];
+      const excludedRoutes = ["login", "register", "quizList", "Quiz", "userQuizList"];
 
 // Check if the current route path is in the excludedRoutes array
 return !excludedRoutes.includes(this.$route.name);
