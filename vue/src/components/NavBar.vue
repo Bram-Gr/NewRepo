@@ -1,27 +1,30 @@
 <template>
     <nav id="main" :class="{ onScroll: !view.topOfPage }">
-      <a  v-if="displayBackButton" @click="goBack"></a>
       <router-link class="logo" v-bind:to="{ name: 'home' }"
         >QUIZZICAL </router-link
-      >&nbsp;&nbsp;&nbsp;
+      >
       <div class="nav-buttons">
-      <a class="back" v-if="displayBackButton" @click="goBack">Back | </a>&nbsp;
-      <router-link class="nav-button" v-bind:to="{ name: 'select' }"
+      <a class="back" v-if="displayBackButton" @click="goBack">Back |</a>&nbsp;
+      <router-link v-if="displaySelect && !includedRoutes" class="nav-button" v-bind:to="{ name: 'select' }"
+        >Select Quiz |</router-link
+      >
+      
+      <router-link v-else-if="displaySelect" class="nav-button" v-bind:to="{ name: 'select' }"
         >Select Quiz </router-link
       > &nbsp;
+
       <router-link
         class="nav-button"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != '' && displayLogout"
-      >
-        | Logout</router-link
+      >Logout</router-link
       >
       <router-link
         class="nav-button"
         v-bind:to="{ name: 'login' }"
         v-else-if="displayLogin"
       >
-        | Login</router-link
+     Login</router-link
       >
     </div>
     </nav>
@@ -52,17 +55,32 @@ export default {
   },
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
+
   },
   computed: {
+    includedRoutes() {
+      const excludedRouteNames = ['Home', 'Quiz', 'quizList', 'login', 'register'];
+      
+      return excludedRouteNames.includes(this.$route.name);
+    },
     displayBackButton() {
       return this.$route.path !== "/";
     },
     displayLogout() {
-      return this.$route.path === "/" || "select";
+      const excludedRoutes = ["login", "register", "quizList", "Quiz"];
+
+// Check if the current route path is in the excludedRoutes array
+return !excludedRoutes.includes(this.$route.name);
     },
     displayLogin() {
-      return this.$route.path === "/" || "select";
+      const excludedRoutes = ["login", "register", "quizList", "Quiz"];
+
+// Check if the current route path is in the excludedRoutes array
+return !excludedRoutes.includes(this.$route.name);
     },
+    displaySelect(){
+      return this.$route.path !== "/select-page";
+    }
   }
 };
 </script>
