@@ -39,6 +39,7 @@ p{
     font-size: 1.3rem;
 }
 button{
+  cursor: pointer;
   font-size: 1.2rem;
   text-align: center;
   padding:2rem;
