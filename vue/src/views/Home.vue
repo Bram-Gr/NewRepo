@@ -1,20 +1,12 @@
 <template>
-  <div>
-    <h1>ABOUT</h1>
-    <p>Welcome to QUIZZICAL, a full stack appliction I've developed to help me remember stuff. You can do the same!
-        This is the first iteration of this web based application with many more planned features in the works.
-        This version is primarily here to help me study as I keep myself afloat in the vast sea of job rejections
-        uponst which I sail. My roadmap for QUIZICAL entails a profile page where users can personalize their experience
-        with a user icon and see their quizzes/favorited quizzes. Another planned feature is the community quiz category
-        where all users can submit their quizzes to the quiz-fam. Any flagged quizzes will be reviewed and are subject 
-        to removal. Top quizzes will be featured and plans for AI generated multiple choice options are in the works as well.
-    </p>
+  <div id="home">
+    <h1>Welcome to QUIZZICAL, a full stack appliction I've developed to help me remember stuff. You can do the same!</h1>
+
     <div class="button-container">
     <button @click="select">Get Started</button>
   </div>
   </div>
 </template>
-
 <script>
 export default {
 methods:{
@@ -26,17 +18,19 @@ methods:{
 </script>
 
 <style scoped>
+#home{
+    padding-top: 7rem;
+  color: white;
+}
 h1{
-    font-size: 3rem;
+  
+    text-align: center;
+    font-size: 2rem;
     padding-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-p{
-    padding-right:6rem;
-    padding-left: 6rem;
-    font-size: 1.3rem;
+    padding-bottom: 2rem;
 }
 button{
   cursor: pointer;

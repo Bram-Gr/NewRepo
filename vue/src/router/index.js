@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import SelectQuiz from '../views/SelectQuiz.vue'
+import About from '../views/About.vue'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
@@ -21,6 +22,16 @@ const router = new Router({
       name: 'select',
       component: SelectQuiz,
       meta: {
+        breadcrumb:'SelectQuiz',
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+      meta: {
+        breadcrumb:'About',
         requiresAuth: false
       }
     },
@@ -37,6 +48,7 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
+        breadcrumb:'Login',
         requiresAuth: false
       }
     },
@@ -45,6 +57,7 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
+        breadcrumb:'Logout',
         requiresAuth: false
       }
     },
@@ -53,6 +66,7 @@ const router = new Router({
       name: "register",
       component: Register,
       meta: {
+        breadcrumb:'Register',
         requiresAuth: false
       }
     },
@@ -62,6 +76,7 @@ const router = new Router({
       name: "quizList",
       component: Quizzes,
       meta: {
+        breadcrumb:'Quizzes',
         requiresAuth: false
       }
     },
@@ -70,6 +85,7 @@ const router = new Router({
       name:"userQuizList",
       component: Quizzes,
       meta:{
+        breadcrumb:'Quizzes',
         requiresAuth: true
       }
     },
@@ -78,6 +94,7 @@ const router = new Router({
       name: "Quiz",
       component: Quiz,
       meta: {
+        breadcrumb:'Quiz',
         requiresAuth: false
       }
     }

@@ -109,6 +109,7 @@ export default {
     justify-content: center;
   }
   .Quizzical{
+    padding:2.5rem;
   flex-wrap: wrap;
     position: relative;
       font-size: 24px;     

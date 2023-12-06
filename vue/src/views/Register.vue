@@ -93,8 +93,10 @@ export default {
   cursor: pointer;
 }
 h1{
+  text-align: left;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
  p .route, .form-container, .input, .register{
   
@@ -104,11 +106,12 @@ h1{
 }
 
 #register{
-  margin-top: 4rem;
+  margin-top: 1rem;
   justify-content: center;
   display: flex;
 }
 .form-container{
+  text-align: right;
   display: flex;
   padding:1rem;
 padding-right: 1.5rem;

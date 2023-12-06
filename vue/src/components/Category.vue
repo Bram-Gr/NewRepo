@@ -27,6 +27,7 @@ export default {
   padding: .3rem;
 }
 .card {
+  min-height: 10rem;
   text-align: center;
   margin-top:1rem;
   height: 10rem;

@@ -68,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  text-align: left;
+}
 .input{
   margin-top: .3rem;
   background-color: transparent;
@@ -90,6 +93,7 @@ p .route, .form-container, .input, .sign-in{
   font-size: 1.5rem;
 }
 .form-container{
+  text-align: right;
   display: flex;
   padding:1rem;
 padding-right: 1.5rem;
@@ -101,7 +105,7 @@ padding-left: 1.5rem;
 }
 
 #login{
-  margin-top: 4rem;
+  margin-top: 1rem;
   justify-content: center;
   display: flex;
 }
