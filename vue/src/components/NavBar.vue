@@ -1,48 +1,29 @@
 <template>
-    <nav
-      id="main"
-      class="navigation-menu navigation-container"
-      :class="{ onScroll: !view.topOfPage }"
-    >
-    <router-link class="logo" v-bind:to="{ name: 'home' }"
-        >QUIZZICAL </router-link
-      >
-  
-      <input type="checkbox" id="toggleMenu" @click="toggleMenu" />
-      <label for="toggleMenu"><i class="fa fa-bars" id="toggleIcon"></i></label>
-      <section class="main-menu">
-        <ul class="navigation-menu__labels">
-          <li @click="resetToggle()">
-            <router-link  v-bind:to="{ name: 'about' }">
-              ABOUT
-            </router-link>
-          </li>
-          <li         v-if="$store.state.token != '' && displayLogout" @click="resetToggle()">
-            <router-link
-        class="nav-button"
-        v-bind:to="{ name: 'logout' }"
+  <b-navbar id="main" toggleable="md" type="dark" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
+    <b-navbar-brand class="logo" to="/">QUIZZICAL</b-navbar-brand>
 
-      >LOGOUT</router-link
-      >
-    
-          </li>
-          <li   v-else-if="displayLogin" @click="resetToggle()">
-            <router-link
-        class="nav-button"
-        v-bind:to="{ name: 'login' }"
-      
-      >
-     LOGIN</router-link
-      >
-            </li>
-        </ul>
-      </section>
-    </nav>
-  </template>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse class="navigation-menu-labels" is-nav id="nav-collapse">
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item class="ml-auto" @click="resetToggle"><router-link to="/about">ABOUT</router-link></b-nav-item>
+        <b-nav-item  v-if="$store.state.token !== '' && displayLogout" @click="resetToggle">
+          <router-link class="nav-button" to="/logout">LOGOUT</router-link>
+        </b-nav-item>
+        <b-nav-item v-else-if="displayLogin" @click="resetToggle">
+          <router-link class="nav-button" to="/login">LOGIN</router-link>
+        </b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</template>
+
   
   <script>
-  
+  import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem } from 'bootstrap-vue';
+
   export default {
+    components:[BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem],
     name: "NavigationComponent",
     data() {
       return {
@@ -59,7 +40,7 @@
   
     methods: {
          handleScroll() {
-        if (window.scrollY > 100) {
+        if (window.scrollY >= 100) {
           if (this.view.topOfPage) this.view.topOfPage = false;
         } else {
           if (!this.view.topOfPage) this.view.topOfPage = true;
@@ -100,7 +81,25 @@
   </script>
   
   <style scoped>
-  .navigation-menu__labels{
+  #main{
+    z-index: 1;
+  top: 0;
+  padding: 1rem;
+  width: 100%;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  position:fixed;
+ flex-wrap: wrap;
+    background: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
+  }
+  .navbar-expand-md .navbar-collapse {
+    text-align: right;
+    justify-content: flex-end;
+    display: flex;
+    /* flex-basis: auto; */
+}
+  .navigation-menu-labels{
     font-size: 1.5rem;
   }
   * {
@@ -138,7 +137,7 @@
     padding-block: 15px;
   }
   .onScroll {
-    background: black;
+    background: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
   }
   .navigation-menu a {
     text-decoration: none;
@@ -148,7 +147,7 @@
     text-decoration: none;
     color: #fdfefe;
     border: none;
-    background-color: transparent;
+    background-color: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
   }
   .logo{
   font-size: 2rem;
@@ -156,16 +155,16 @@
 }
   
   
-  .navigation-menu__labels {
+  .navigation-menu-labels {
     list-style: none;
     display: flex;
     gap: 25px;
     align-items: flex-end;
   }
 
-  .navigation-menu__labels > li > a:hover  {
+  /* .navigation-menu-labels > li > a:hover  {
  cursor: pointer;
-  }
+  } */
 
   
   #toggleMenu,
@@ -175,22 +174,29 @@
   }
   
   @media screen and (max-width: 768px) {
+
+    .navbar-expand-md .navbar-collapse {
+      /* background: linear-gradient(to bottom, #0a0b0a, #0c0c0c);  */
+    text-align: left;
+    justify-content: flex-start;
+    display: flex;
+    
+    /* flex-basis: auto; */
+}
     .main-menu {
       width: 100%;
       max-height: 0;
       overflow: hidden;
       opacity: 1;
     }
-    .navigation-container{
   
-    background-color: #353631;
-    }
     .navigation-menu label {
       display: inline-flex;
       align-items: flex-start;
       cursor: pointer;
       color: #fdfefe;
     }
+    
   
     .navigation-menu__labels {
       flex-direction: column;
@@ -200,7 +206,7 @@
     }
   
     #toggleMenu:checked ~ .main-menu {
-      max-height: 75%;
+      max-height: 75rem;
     }
   }
   </style>

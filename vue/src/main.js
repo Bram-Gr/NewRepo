@@ -11,7 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
-// Vue.use(modal)
+
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 
 new Vue({

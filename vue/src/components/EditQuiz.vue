@@ -15,7 +15,7 @@
 <div class="bottom-buttons">
   <button
           @click="deleteQuiz(quiz)"
-        >Delete Quiz</button>
+        >Delete</button>
 
   <button  @click="addQuestion">Add Question</button>
       <button type="submit">Save</button>

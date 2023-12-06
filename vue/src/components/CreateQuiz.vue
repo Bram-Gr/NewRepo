@@ -1,6 +1,6 @@
 <template>
     <div>
-      <form class="modal" @submit="submitQuiz">
+      <form class="not-modal" @submit="submitQuiz">
         <label for="quizName">Quiz Name:</label>
         <textarea  class="input" id="quizName" v-model="quizName" required/>
 
@@ -83,7 +83,7 @@ label{
   color: #ffffff;
   font-size:1.4rem;
 }
-.modal{
+.not-modal{
   padding:1rem;
   margin-top:1.5rem;
   background: linear-gradient(to bottom, #4a148c, #311b92);

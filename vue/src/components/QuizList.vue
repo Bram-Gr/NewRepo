@@ -1,6 +1,7 @@
 <template>
   <!-- should be called QuizCard.vue, note for refactor -->
-  <div class="QuizTitleCard">
+  <div>
+  <div class="QuizTitleCard1"  v-if="quiz.categoryId === 6">
     <router-link
       class="link"
       :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
@@ -9,10 +10,10 @@
         <h1 class="name">{{ quiz.quizName }}</h1>
 
     
-          <button
+          <button class="edit"
             v-show="editButton"
             @click="editQuiz(existingQuizData)"
-            v-if="quiz.categoryId === 6"
+           
           >
             Edit Quiz
           </button>
@@ -27,6 +28,18 @@
       @closeModal="closeModal"
     />
   </div>
+  <div class="QuizTitleCard2"  @click="redirectToQuiz"  v-else>
+    <router-link
+      class="link"
+      :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
+    >
+      <!-- <div class="quiz-box"> -->
+        <h1 class="name">{{ quiz.quizName }}</h1>
+     
+      <!-- </div> -->
+    </router-link>
+  </div>
+</div>
 </template>
 
 <script>
@@ -55,6 +68,13 @@ export default {
     quiz: Object,
   },
   methods: {
+    redirectToQuiz() {
+      // Access the route information from the router-link and navigate programmatically
+      this.$router.push({
+        name: 'Quiz',
+        params: { quizId: this.quiz.quizId },
+      });
+    },
     openModal() {
       this.isModalOpen = true; // Open the modal
     },
@@ -119,25 +139,37 @@ export default {
   align-items: flex-end;
 
 } */
-.QuizTitleCard {
+.QuizTitleCard1{
+  
+  cursor: point;
   background: linear-gradient(to bottom, #4a148c, #311b92);
   border-radius: 10px;
 }
-button {
-  margin-left:9rem;
+.QuizTitleCard2{
+  cursor: pointer;
+  min-height: 8rem;
+  max-width: 15rem;
+  cursor: point;
+  background: linear-gradient(to bottom, #4a148c, #311b92);
+  border-radius: 10px;
+}
+.edit {
+ 
   position:relative;
-  /* text-align: right; */
+
   top: 16px;
   font-size: .8rem;
   background-color: transparent;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 20px 20px;
   cursor: pointer;
   margin-top: 10px;
 }
 .name {
-  margin-top: 1.4rem;
+  padding: 1rem;
+  text-align: center;
+  /* margin-top: 1.4rem; */
   color: white;
 }
 .link {

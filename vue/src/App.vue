@@ -4,7 +4,8 @@
   <nav-bar />
   </div>  
   
-  <b-breadcrumb class="bread-crumb" :items="items"></b-breadcrumb>
+  <b-breadcrumb
+  class="bread-crumb" :items="items"></b-breadcrumb>
     <router-view />
    
   </div>
@@ -16,6 +17,7 @@ export default {
   components: {navBar, BBreadcrumb},
   data() {
     return {
+     
       items: [
           {
             text: 'Select',
@@ -23,11 +25,11 @@ export default {
           },
           {
             text: 'Quizzes',
-            to:{name:"userQuizList"}
+            to:{path: "/categories/:categoryId"}
           },
           {
             text: 'Quiz',
-            to:{name: "Quiz"}
+            to:{path: "/categories/:quizId/quizzes"}
           }
         ]
         }
