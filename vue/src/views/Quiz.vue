@@ -21,6 +21,7 @@ data(){
     mounted() {
       try {
       quizService.getQuizzesByQuizId(this.$route.params.quizId).then((response) => {
+        console.log(response.data)
          this.quizName = response.data[0].quizName
       });
     } catch (error) {

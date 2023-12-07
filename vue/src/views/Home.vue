@@ -12,6 +12,7 @@ export default {
 methods:{
     select(){
       this.$router.push('/select-page');
+
     }
 }
 }
@@ -23,14 +24,14 @@ methods:{
   color: white;
 }
 h1{
-  
+    padding: 3rem;
     text-align: center;
     font-size: 2rem;
-    padding-top: 5rem;
+    padding-top: 7rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
 }
 button{
   cursor: pointer;

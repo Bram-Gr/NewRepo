@@ -1,47 +1,49 @@
 <template>
-    <div>
- 
+  <div>
     <b-breadcrumb>
-      <!-- Top-level select -->
-    
-      <b-breadcrumb-item :to="{ name: 'select' }" @change="handleTopLevelChange">Select</b-breadcrumb-item>
- 
-  
-      <!-- Second-level quizzes -->
-      <b-breadcrumb-item :to="{ name: 'Quizzes', params: {categoryId} }">Quizzes</b-breadcrumb-item>
-  
-      <!-- Third-level quiz -->
-      <b-breadcrumb-item :to="{ name: 'Quiz', params: { quizId: currentQuizId } }">{{ currentQuizName }}</b-breadcrumb-item>
+      <b-breadcrumb-item :to="{ name: 'select' }" :active="false">Categories</b-breadcrumb-item>
+      <b-breadcrumb-item  @click="goToPreviousRoute" :active="isBreadcrumbActive('quizList')">Quizzes</b-breadcrumb-item>
+      <b-breadcrumb-item :to="{ name: 'Quiz' }" :active="isBreadcrumbActive('Quiz')">Quiz</b-breadcrumb-item>
     </b-breadcrumb>
-</div>
-  </template>
-  
-  <script>
+  </div>
+</template>
 
-  export default {
+<script>
+// import quizService from '../services/QuizService';
+export default {
+  data() {
+    return {
+      active: true,
+   
+    };
+  },
+  methods: {
+ 
+    goToPreviousRoute() {
+      if(this.$route.name ==='Quiz'){
+      this.$router.go(-1);
+    }
+    },
+    isBreadcrumbActive(breadcrumbName) {
+      // Logic to determine if the breadcrumb is active based on the current route
+      const currentRoute = this.$route.name;
 
-    components: {
-    
+      if (currentRoute === 'Quiz') {
+        return false; // Set all breadcrumbs to false when the current route is Quiz
+      } else if ((currentRoute === 'quizList' || currentRoute === 'userQuizList') && (breadcrumbName === 'select' || breadcrumbName === 'quizList')) {
+        return false; // Set to false for select and quizList when the current route is quizList
+      } else if (currentRoute !== breadcrumbName) {
+        return true; // Set to true for all other cases
+      }
+
+      return true;
     },
-    data() {
-      return {
-        categoryId: this.$store.state.quiz.categoryId || "",
-        quiz: this.$store.state.quiz,
-        currentQuizId:'',
-        currentQuizName: '',
-      };
-    },
-    methods: {
-      handleTopLevelChange(selectedValue) {
-        // Handle the change in the top-level select
-        // Update currentQuizId and currentQuizName based on the selectedValue
-        this.currentQuizId = selectedValue.id;
-        this.currentQuizName = selectedValue.name;
-      },
-    },
-  };
-  </script>
-  
+  }
+};
+</script>
 <style scoped>
-
+a{
+  text-decoration: none;
+  color:white;
+}
 </style>

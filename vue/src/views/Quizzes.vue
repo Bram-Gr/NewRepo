@@ -1,7 +1,8 @@
 <template>
   <div class="quiz-page-main">
   <div class="quizzes">
-    <h1>GET QUIZZICAL</h1>
+    <h1 v-if="category">{{ category }}</h1>
+    <h1 v-else>CUSTOM</h1>
     <div class="quiz-page">
       <div  class="create-form" v-if="routeParamsCheck">
     <button class="create-button" @click="openModal">Create Quiz</button>
@@ -27,10 +28,12 @@
 import quizList from "../components/QuizList";
 import quizService from "../services/QuizService";
 import createQuiz from "../components/CreateQuiz"
+import CategoryService from '../services/CategoryService';
 export default {
   components: { quizList, createQuiz },
   data() {
     return {
+      category: this.categoryName,
       quiz: {},
       quizzes: [],
       isModalOpen: false,
@@ -70,6 +73,20 @@ export default {
     }
   },
   mounted() {
+
+ CategoryService.getCategories().then((response) => {
+  console.log(response.data);
+
+  const categoryData = response.data[this.$route.params.categoryId-1];
+
+  if (categoryData && categoryData.categoryName) {
+    this.category = categoryData.categoryName.toUpperCase();
+  } else {
+    // Handle the case where categoryData or categoryName is undefined
+    console.error(`Category with ID ${this.$route.params.categoryId} not found or does not have a valid name.`);
+  }
+});
+
     // this.updateBackgroundSize();
 
     // // Call the function whenever the window is resized
@@ -89,7 +106,6 @@ export default {
         });
       } else {
         // Handle the case where neither userId nor categoryId is present
-        console.error('Invalid route parameters');
       }
     } catch (error) {
       console.error(error);
@@ -115,6 +131,7 @@ flex-wrap: wrap;
 margin-left:2rem;
 }
 h1{
+  padding-top: 2rem;
   color:white;
   display: flex;
   justify-content: center;
@@ -135,11 +152,6 @@ h1{
   margin-top:2rem;
   padding:.5rem;
   margin-left:2rem;
-/* flex-wrap:wrap;
-display:flex;
-justify-content: center;
-align-items: center; */
-/* border: 4px solid #FFF; */
 color: white;
 /* background: rgba(255, 253, 253, 0.00);
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */

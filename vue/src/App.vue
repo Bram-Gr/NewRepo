@@ -4,34 +4,33 @@
   <nav-bar />
   </div>  
   
-  <b-breadcrumb
-  class="bread-crumb" :items="items"></b-breadcrumb>
+  <sub-nav class="bread-crumb" />
     <router-view />
    
   </div>
 </template>
 <script>
-import { BBreadcrumb } from 'bootstrap-vue'
+import  SubNav  from './components/SubNav'
 import NavBar from "./components/NavBar"
 export default {
-  components: {NavBar, BBreadcrumb},
+  components: {NavBar, SubNav},
   data() {
     return {
      
-      items: [
-          {
-            text: 'Select',
-            to:{name: 'select'}
-          },
-          {
-            text: 'Quizzes',
-            to:{path: "/categories/:categoryId"}
-          },
-          {
-            text: 'Quiz',
-            to:{path: "/categories/:quizId/quizzes"}
-          }
-        ]
+      // items: [
+      //     {
+      //       text: 'Select',
+      //       to:{name: 'select'}
+      //     },
+      //     {
+      //       text: 'Quizzes',
+      //       to:{path: "/categories/:categoryId"}
+      //     },
+      //     {
+      //       text: 'Quiz',
+      //       to:{path: "/categories/:quizId/quizzes"}
+      //     }
+      //   ]
         }
     
   }
