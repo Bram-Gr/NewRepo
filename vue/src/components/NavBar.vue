@@ -1,7 +1,9 @@
 <template>
   <b-navbar id="main" toggleable="md" type="dark" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
+    <div class="b-nav">
     <b-navbar-brand class="logo" to="/">QUIZZICAL</b-navbar-brand>
-
+    <sub-nav v-show="!view.topOfPage" class="bread-crumb"/>
+  </div>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse class="navigation-menu-labels" is-nav id="nav-collapse">
@@ -20,13 +22,16 @@
 
   
   <script>
-  import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem } from 'bootstrap-vue';
-
+  import { BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem  } from 'bootstrap-vue';
+  
+import SubNav from './SubNav.vue';
   export default {
-    components:[BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem],
+   
+    components:{BNavbar, BNavbarBrand, BNavbarToggle, BNavbarNav, BNavItem, SubNav},
     name: "NavigationComponent",
     data() {
       return {
+       
        
         checkbox: false,
         view: {
@@ -41,7 +46,7 @@
     methods: {
          handleScroll() {
         if (window.scrollY >= 100) {
-          if (this.view.topOfPage) this.view.topOfPage = false;
+          if (this.view.topOfPage) this.view.topOfPage = false ;
         } else {
           if (!this.view.topOfPage) this.view.topOfPage = true;
         }
@@ -81,6 +86,18 @@
   </script>
   
   <style scoped>
+
+
+  .b-nav{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .bread-crumb{
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end;
+  }
   #main{
     z-index: 1;
   top: 0;

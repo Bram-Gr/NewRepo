@@ -12,9 +12,9 @@
 </template>
 <script>
 import { BBreadcrumb } from 'bootstrap-vue'
-import navBar from "./components/NavBar"
+import NavBar from "./components/NavBar"
 export default {
-  components: {navBar, BBreadcrumb},
+  components: {NavBar, BBreadcrumb},
   data() {
     return {
      
@@ -47,6 +47,7 @@ export default {
 }
 #nav{
  display: inline-block;
+
 }
 #app {
   height: 100vh;

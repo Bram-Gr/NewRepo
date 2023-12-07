@@ -4,29 +4,6 @@
 
       <h1 class="Quizzical">Category Select</h1>
     </div>
-    <!-- <div class="title" v-if="user.username">Welcome To Quizzical, {{ user.username.toUpperCase() }}!
-      <p> Browse Categories to Select a Quiz or Create your Own Custom Quiz 
-        Browse categories or create and account to make your own note card quizzes!
-       <br><br> Road map
-<ul>
-<li>Implement AI to generate multiple choices answers with varying degrees of difficulty.</li>
-     <li>Community quizzes will allow users to submit their quizzes for review, if approved users will be able to interact with these quizzes and rate them.</li>
-<li>Currently working on game logic to bolster user engagement.</li>
-</ul>
-      </p>
-    </div> -->
-    <!-- <div class="title" v-else>Welcome To Quizzical!
-      <p>Browse Categories to Select a Quiz or Create a Custom Quiz (requires login)
-        Browse categories or create and account to make your own note card quizzes!
-
-        <br><br>Road map
-<ul>
-<li>Implement AI to generate multiple choices answers with varying degrees of difficulty.</li>
-<li>Community quizzes will allow users to submit their quizzes for review, if approved users will be able to interact with these quizzes and rate them.</li>
-<li>Currently working on game logic to bolster user engagement.</li>
-</ul>
-      </p>
-      </div>  -->
    
 <div class="categories">
     <router-link class="link"
