@@ -3,14 +3,14 @@
   <div class="quizzes">
     <h1 v-if="category">{{ category }}</h1>
     <h1 v-else>CUSTOM</h1>
-    <div class="quiz-page">
-      <div  class="create-form" v-if="routeParamsCheck">
-    <button class="create-button" @click="openModal">Create Quiz</button>
+  
+      <div v-if="routeParamsCheck">
+    <b-button block variant="primary"  @click="openModal">Create Quiz</b-button>
     <create-quiz v-if="isModalOpen" @click="closeModal" @closeModal="closeModal"/>
   </div>
-
+  <h1 v-if="routeParamsCheck" class="user-q" >{{ name.toUpperCase() }}'S QUIZZES</h1>
   <div  v-if="routeParamsCheck" class="quizzes-list">
-    <h1 class="user-q" >{{ name.toUpperCase() }}'S QUIZZES</h1>
+  
     <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes.slice().reverse()" :key="index" :quiz="uniqueQuiz" />  
   </div>
 
@@ -18,7 +18,7 @@
     <quiz-list class="quiz-list" v-for="(uniqueQuiz, index) in quizzes" :key="index" :quiz="uniqueQuiz" />  
   </div>
   
-   </div>  
+ 
   </div>
 </div>
 </template>
@@ -118,13 +118,16 @@ export default {
 </script>
 
 <style scoped>
-.user-q{
-  color:white;
+h1.user-q{
+  text-decoration: none;
+  color: black;
 }
 .q-quiz{
-  color: white;
+  margin-top: 2rem;
+  /* color: white; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .create-form{  
 flex-wrap: wrap;
@@ -132,7 +135,7 @@ margin-left:2rem;
 }
 h1{
   padding-top: 2rem;
-  color:white;
+  color:black;
   display: flex;
   justify-content: center;
 }
@@ -148,13 +151,18 @@ h1{
   font-size: 2rem;
   text-decoration: underline;
 }
-.quiz-list{
+.quizzes-list{
+  justify-content: center;
+  display: flex;
   margin-top:2rem;
   padding:.5rem;
   margin-left:2rem;
 color: white;
 /* background: rgba(255, 253, 253, 0.00);
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+}
+.quiz-list{
+  padding: .6rem;
 }
 .quiz-page-main{
   margin-top:8rem;
@@ -169,5 +177,8 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
 .quizzes{
  height: 100vh;
+}
+h1.name{
+  color: black;
 }
 </style>

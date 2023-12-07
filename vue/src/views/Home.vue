@@ -21,7 +21,7 @@ methods:{
 <style scoped>
 #home{
     padding-top: 7rem;
-  color: white;
+  color: black;
 }
 h1{
     padding: 3rem;

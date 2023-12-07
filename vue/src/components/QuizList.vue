@@ -10,13 +10,13 @@
         <h1 class="name">{{ quiz.quizName }}</h1>
 
     
-          <button class="edit"
+          <b-button pill size="sm"
             v-show="editButton"
             @click="editQuiz(existingQuizData)"
            
           >
             Edit Quiz
-          </button>
+          </b-button>
      
       <!-- </div> -->
     </router-link>
@@ -133,6 +133,14 @@ export default {
 </script>
 
 <style scoped>
+
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+    margin: .6rem;
+    /* top:580px;
+    position: absolute; */
+    padding: .3rem;
+}
 /* .edit-button{
   display: flex;
   justify-content: flex-end;
@@ -140,10 +148,11 @@ export default {
 
 } */
 .QuizTitleCard1{
-  
   cursor: point;
   background: linear-gradient(to bottom, #4a148c, #311b92);
   border-radius: 10px;
+  max-width: 15rem;
+  min-height: 12rem;
 }
 .QuizTitleCard2{
   cursor: pointer;

@@ -44,6 +44,9 @@ export default {
 <style scoped>
 a{
   text-decoration: none;
-  color:white;
+  color:black;
+}
+.breadcrumb-item.active {
+    color: wheat;
 }
 </style>

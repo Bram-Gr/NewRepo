@@ -2,17 +2,31 @@
   <div class="modal-content">
     <form @submit="submitEdit">
       <label for="quizName">Quiz Name:</label>
-      <textarea class="input" id="quizName" v-model="quizName" required />
+      <b-form-textarea class="name" id="textarea-no-resize" v-model="quizName" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
+      <!-- <textarea class="input" id="quizName" v-model="quizName" required /> -->
 
-      <div class="questions" v-for="(question, index) in questions" :key="index">
+      <div class="questions" v-for="(question, index) in questions" :key="index">       
         <label>Question:</label>
-        <textarea id="questionAnswers" class="input" v-model="questions[index].question" required />&nbsp;&nbsp;&nbsp;
+        <!-- <b-form-input id="questionAnswers" v-model="questions[index].question" required type="text" debounce="500"></b-form-input> -->
+        <b-form-textarea id="textarea-no-resize" v-model="questions[index].question" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
+        <!-- <textarea id="questionAnswers" class="input" v-model="questions[index].question" required />&nbsp;&nbsp;&nbsp; -->
         <label>Answer:</label>
-        <textarea id="questionAnswers" class="input" v-model="questions[index].answer" required />
+        <!-- <b-form-input id="questionAnswers" v-model="questions[index].answer" required  type="text" debounce="500"></b-form-input> -->
+        <b-form-textarea id="textarea-no-resize" v-model="questions[index].answer" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
+        <!-- <textarea id="questionAnswers" class="input" v-model="questions[index].answer" required /> -->
 
-        <button type="button" @click="removeQuestion(index)">Remove Question</button>
+        <b-button class="rm" size="sm" pill type="button" @click="removeQuestion(index)">Remove Question</b-button>
+<hr>
       </div>
-<div class="bottom-buttons">
+      <div>
+        <b-button-group class="mx-1">
+      <b-button  @click="addQuestion">Add Question</b-button>
+      <b-button  type="submit">Save</b-button>
+      <b-button   @click="deleteQuiz(quiz)">Delete</b-button>
+      <b-button  @click="closeModal">Close</b-button>
+    </b-button-group>
+  </div>
+<!-- <div class="bottom-buttons">
   <button
           @click="deleteQuiz(quiz)"
         >Delete</button>
@@ -20,7 +34,7 @@
   <button  @click="addQuestion">Add Question</button>
       <button type="submit">Save</button>
       <button @click="closeModal">Close</button>
-</div>
+</div> -->
     </form>
   </div>
 </template>
@@ -93,7 +107,20 @@ export default {
 </script>
 
   <style scoped>
-  button{
+
+  /* trying to select specific button to modify/size color with bootstrap vue
+/* button.rm:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) > .rm{
+    cursor: pointer;
+    background-color: red;
+    font-size: .8rem;
+} */
+  label{
+    margin-bottom: .6rem;
+  }
+  #textarea-no-resize{
+    margin-bottom:.3rem;
+  }
+  /* button{
     content:"";
     font-size: 1rem;
   background-color: transparent;
@@ -102,12 +129,20 @@ export default {
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
-  }
+  } */
 .modal-content{
   color:white;
   margin-left:1rem;
 }
-.input {
+.questions, .name{
+  width: 25rem;
+  margin-top: 0.2rem;
+}
+.name{
+
+}
+
+/* .input {
   font-size:1rem;
   font-weight: bold;
   color:white;
@@ -115,7 +150,7 @@ export default {
   border: 1px dashed white;
   margin-left: 1rem;
   margin-top: 0.2rem;
-}
+} */
 
 
 </style>

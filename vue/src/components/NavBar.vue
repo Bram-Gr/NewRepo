@@ -1,12 +1,12 @@
 <template>
   <b-navbar id="main" toggleable="md" type="dark" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
-    <div class="b-nav">
+    <div  class="b-nav">
     <b-navbar-brand class="logo" to="/">QUIZZICAL</b-navbar-brand>
     <sub-nav v-show="!view.topOfPage" class="bread-crumb"/>
   </div>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-navbar-toggle class="navbar-toggler-icon" target="nav-collapse">::</b-navbar-toggle>
 
-    <b-collapse class="navigation-menu-labels" is-nav id="nav-collapse">
+    <b-collapse  class="navigation-menu-labels" is-nav id="nav-collapse">
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="ml-auto" @click="resetToggle"><router-link to="/about">ABOUT</router-link></b-nav-item>
         <b-nav-item  v-if="$store.state.token !== '' && displayLogout" @click="resetToggle">
@@ -87,7 +87,9 @@ import SubNav from './SubNav.vue';
   
   <style scoped>
 
-
+.navbar-toggler-icon{
+  color: black;
+}
   .b-nav{
     display:flex;
     flex-direction: row;
@@ -98,18 +100,7 @@ import SubNav from './SubNav.vue';
     justify-content: flex-end;
     align-items:flex-end;
   }
-  #main{
-    z-index: 1;
-  top: 0;
-  padding: 1rem;
-  width: 100%;
-  display: inline-block;
-  display: flex;
-  flex-direction: row;
-  position:fixed;
- flex-wrap: wrap;
-    background: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
-  }
+
   .navbar-expand-md .navbar-collapse {
     text-align: right;
     justify-content: flex-end;
@@ -123,13 +114,13 @@ import SubNav from './SubNav.vue';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color:white;
+
   }
   
   body {
     margin: 0;
     padding: 0;
-    background-color: #fdfefe;
+ 
     font-family: "Cambria";
     font-size: 18px;
   }
@@ -150,21 +141,31 @@ import SubNav from './SubNav.vue';
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    background-color: transparent;
     padding-block: 15px;
   }
+  #main{
+    z-index: 1;
+  top: 0;
+  padding: 1rem;
+  width: 100%;
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  position:fixed;
+ flex-wrap: wrap;
+    /* background: transparent;  */
+  }
   .onScroll {
-    background: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
+    background: white;
   }
   .navigation-menu a {
     text-decoration: none;
-    color: #fdfefe;
+    color: black;
   }
   .navigation-menu button {
     text-decoration: none;
-    color: #fdfefe;
     border: none;
-    background-color: linear-gradient(to bottom, #0a0b0a, #0c0c0c); 
+   
   }
   .logo{
   font-size: 2rem;
@@ -211,7 +212,7 @@ import SubNav from './SubNav.vue';
       display: inline-flex;
       align-items: flex-start;
       cursor: pointer;
-      color: #fdfefe;
+
     }
     
   

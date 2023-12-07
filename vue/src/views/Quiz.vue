@@ -56,7 +56,7 @@ data(){
   justify-content: center;
 }
 .quiz-page{
-  color: white;
+  /* color: white; */
   margin-top:8rem;
   height:100vh;
   /* margin:4rem; */

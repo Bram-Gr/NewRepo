@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to bottom, #0a0b0a, #0c0c0c); /* Gradient from light green to dark green */
+  background: white; /* Gradient from light green to dark green */
   margin: 0;
   padding: 0;
   /* height: 100vh;
@@ -7,6 +7,7 @@ body {
   justify-content: center;
   align-items: center; */
   font-family: Arial, sans-serif;
+  color: black;
 
 }
 
