@@ -15,7 +15,6 @@
       <div class="bottom-buttons">
         <button type="button" @click="addQuestion">Add Question</button>
         <button type="submit">Save</button>
-        <button @click="closeModal">Close</button>
       </div> 
       </form>
     </div>

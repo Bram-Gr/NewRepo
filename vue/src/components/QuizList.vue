@@ -10,24 +10,44 @@
         <h1 class="name">{{ quiz.quizName }}</h1>
 
     
-          <b-button pill size="sm"
+          <!-- <b-button pill size="sm"
+            v-show="editButton"
+            @click="editQuiz(existingQuizData)"
+           
+          >
+            Edit Quiz
+          </b-button> -->
+
+
+          <!-- <b-button pill size="sm"
             v-show="editButton"
             @click="editQuiz(existingQuizData)"
            
           >
             Edit Quiz
           </b-button>
-     
-      <!-- </div> -->
-    </router-link>
-    <edit-quiz
-      v-if="isModalOpen"
+      -->
+        
+    <b-button  block variant="primary" @click="editQuiz(existingQuizData),   modalShow = !modalShow">Edit Quiz</b-button>
+<b-modal v-model="modalShow">
+  <edit-quiz
       :quizData="this.quizData"
       :quiz="this.quiz"
-      :submitFunction="submitEdit"
-      @closeModal="closeModal"
-    />
+      :submitFunction="submitEdit"/>
+</b-modal>
+
+
+
+    </router-link>
+
   </div>
+
+
+
+
+
+
+
   <div class="QuizTitleCard2"  @click="redirectToQuiz"  v-else>
     <router-link
       class="link"
@@ -48,6 +68,7 @@ import quizService from "../services/QuizService";
 export default {
   data() {
     return {
+      modalShow: false,
       sampleQuiz: {
         quizName: "Sample Quiz",
         questionAnswers: [

@@ -19,7 +19,7 @@
 <style scoped>
 #About{
   padding-top: 2rem;
-  color: white;
+  color: black;
 }
 h1{
     font-size: 3rem;

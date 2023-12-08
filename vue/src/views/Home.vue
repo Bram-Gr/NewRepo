@@ -3,8 +3,9 @@
     <h1>Welcome to QUIZZICAL, a full stack appliction I've developed to help me remember stuff. You can do the same!</h1>
 
     <div class="button-container">
-    <button @click="select">Get Started</button>
+    <b-button variant="primary" block @click="select">Get Started</b-button>
   </div>
+
   </div>
 </template>
 <script>
@@ -33,18 +34,7 @@ h1{
     align-items: center;
     padding-bottom: 3rem;
 }
-button{
-  cursor: pointer;
-  font-size: 1.2rem;
-  text-align: center;
-  padding:2rem;
-  margin-top:1rem;
-  margin-left:1rem;
- 
-color: white;
-background: linear-gradient(to bottom, #4a148c, #311b92);
-border-radius: 10px;
-  }
+
   .button-container{
     display: flex;
 justify-content: center;

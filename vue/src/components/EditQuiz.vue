@@ -23,18 +23,9 @@
       <b-button  @click="addQuestion">Add Question</b-button>
       <b-button  type="submit">Save</b-button>
       <b-button   @click="deleteQuiz(quiz)">Delete</b-button>
-      <b-button  @click="closeModal">Close</b-button>
     </b-button-group>
   </div>
-<!-- <div class="bottom-buttons">
-  <button
-          @click="deleteQuiz(quiz)"
-        >Delete</button>
 
-  <button  @click="addQuestion">Add Question</button>
-      <button type="submit">Save</button>
-      <button @click="closeModal">Close</button>
-</div> -->
     </form>
   </div>
 </template>
