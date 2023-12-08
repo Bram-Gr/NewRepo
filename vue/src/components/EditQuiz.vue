@@ -122,11 +122,9 @@ export default {
   margin-top: 10px;
   } */
 .modal-content{
-  color:white;
-  margin-left:1rem;
+
 }
 .questions, .name{
-  width: 25rem;
   margin-top: 0.2rem;
 }
 .name{

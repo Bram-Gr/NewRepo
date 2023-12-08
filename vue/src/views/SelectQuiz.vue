@@ -99,7 +99,7 @@ export default {
 
  .categories{
   margin-right:2.7rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   display:flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -111,15 +111,18 @@ export default {
     padding:2rem; 
   } */
   .title{
+    text-align: center;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 1rem;
-    margin-top:8rem;
-    color: white;
+    margin-top:5.6rem;
+    color: #064789;
+    /* background-color:rgb(41, 41, 201) ; */
    /* display: inline-block; */
    /* width: 100%; */
-   background-image: url("../assets/bg2.webp");
-   background-repeat: no-repeat; /* Prevent image from repeating */
-  background-size: cover;
+   /* background-image: url("../assets/bg2.webp"); */
+   /* background-repeat: no-repeat;
+  background-size: cover; */
   
   }
   .link{
@@ -129,10 +132,7 @@ export default {
   }
 }
 @media screen and (min-width: 244px){
-  /* h1,p,.title{
-    color:white;
-    font-size:2rem;   
-  } */
+
 }
 @media screen and (min-width: 658px){
 

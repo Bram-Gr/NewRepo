@@ -36,7 +36,7 @@ export default {
 justify-content: center;
 align-items:center;
 width:20rem;
-background: linear-gradient(to bottom, #4a148c, #311b92);
+background: linear-gradient(to bottom, #427AA1 , #463a7d);
 border-radius: 10px;
   }
   

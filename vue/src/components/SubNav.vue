@@ -47,6 +47,6 @@ a{
   color:black;
 }
 .breadcrumb-item.active {
-    color: wheat;
+    color: transparent;
 }
 </style>

@@ -4,17 +4,11 @@
     <div class="quizzes">
        <!-- conditionally displays Category Name or Custom -->
        <div v-if="category" class="head">
-      <h1 >{{ category }}</h1>      
+      <h1 class="cat">{{ category }}</h1>  
     </div>
-         
-      <div v-if="routeParamsCheck">
-        <div class="custom">CUSTOM</div>
-        <b-button block variant="primary" @click="modalShow = !modalShow"
-          >Create Quiz</b-button
-        ><b-modal v-model="modalShow">
-          <create-quiz />
-        </b-modal>
-      </div>
+    <div v-else class="custom">CUSTOM</div>    
+
+   
 
 
       <h1 v-if="routeParamsCheck" class="user-q">
@@ -27,6 +21,14 @@
           :key="index"
           :quiz="uniqueQuiz"
         />
+      </div>
+
+      <div class="create" v-if="routeParamsCheck">      
+        <b-button block variant="primary" @click="modalShow = !modalShow"
+          >Create Quiz</b-button
+        ><b-modal v-model="modalShow">
+          <create-quiz />
+        </b-modal>
       </div>
 
       <div class="q-quiz" v-else>
@@ -133,17 +135,22 @@ export default {
 </script>
 
 <style scoped>
+.create{
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
 button{
   display: inline-block;
-  width: 100%;
-  border-radius: 0px;
+  width: 50%;
+  border-radius: 20px;
 }
 h1.user-q {
   text-decoration: none;
-  color: black;
+  color: #064789;
 }
 .q-quiz {
-  margin-top: 2rem;
+  margin-top: 14rem;
   /* color: white; */
   display: flex;
   flex-wrap: wrap;
@@ -157,20 +164,46 @@ h1.user-q {
   font-size: 5rem;
   font-weight:bold;
   text-align: center;
-  background-color: rgba(9, 0, 128, 0.288);
+  color: white;
+}
+
+.custom{
+  padding-top: 5rem;
+  align-items: flex-end;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: -1;
+  background-color: #427AA1;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top:0px;
+  height: 12rem;
+}
+h1.user-q{
+  padding-top: 3rem;
 }
 .head{
+  padding-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
   z-index: -1;
-  background-color: rgba(9, 0, 128, 0.288);
+  background-color: #427AA1;
   left: 0;
   right: 0;
   height: 9rem;
   position: absolute;
   top:0px;
 }
+.cat{
+  font-size: 4rem;
+  color: white;
+}
+h1{
+padding-top: 1.6rem;
+}
 .head, h1 {
-
-  padding-top: 2rem;
   color: black;
   display: flex;
   justify-content: center;
@@ -178,6 +211,7 @@ h1.user-q {
 .create-button {
   margin-top: 1.26rem;
 }
+
 .create-button,
 .user-q {
   font-weight: bold;
@@ -189,6 +223,7 @@ h1.user-q {
   text-decoration: underline;
 }
 .quizzes-list {
+  flex-wrap: wrap;
   justify-content: center;
   display: flex;
   margin-top: 2rem;
@@ -212,9 +247,7 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
   /* margin: 5rem; */
   justify-content: center;
 }
-.quizzes {
-  height: 100vh;
-}
+
 h1.name {
   color: black;
 }

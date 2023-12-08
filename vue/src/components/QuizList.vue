@@ -2,33 +2,17 @@
   <!-- should be called QuizCard.vue, note for refactor -->
   <div>
   <div class="QuizTitleCard1"  v-if="quiz.categoryId === 6">
+
     <router-link
       class="link"
       :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
     >
+    <b-button  block variant="primary" @click="editQuiz(existingQuizData),   modalShow = !modalShow">Edit</b-button>
       <!-- <div class="quiz-box"> -->
         <h1 class="name">{{ quiz.quizName }}</h1>
 
-    
-          <!-- <b-button pill size="sm"
-            v-show="editButton"
-            @click="editQuiz(existingQuizData)"
-           
-          >
-            Edit Quiz
-          </b-button> -->
-
-
-          <!-- <b-button pill size="sm"
-            v-show="editButton"
-            @click="editQuiz(existingQuizData)"
-           
-          >
-            Edit Quiz
-          </b-button>
-      -->
         
-    <b-button  block variant="primary" @click="editQuiz(existingQuizData),   modalShow = !modalShow">Edit Quiz</b-button>
+
 <b-modal v-model="modalShow">
   <edit-quiz
       :quizData="this.quizData"
@@ -39,6 +23,18 @@
 
 
     </router-link>
+
+<!-- 
+    <edit-quiz
+      v-if="isModalOpen"
+      :quizData="this.quizData"
+      :quiz="this.quiz"
+      :submitFunction="submitEdit"
+      @closeModal="closeModal"
+    /> -->
+
+
+
 
   </div>
 
@@ -161,6 +157,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
     /* top:580px;
     position: absolute; */
     padding: .3rem;
+    padding-bottom: 0rem;
 }
 /* .edit-button{
   display: flex;
@@ -168,20 +165,22 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   align-items: flex-end;
 
 } */
-.QuizTitleCard1{
+.QuizTitleCard1, .QuizTitleCard2{
+  border: 1px solid #679436;
+  /* color: #064789; */
   cursor: point;
-  background: linear-gradient(to bottom, #4a148c, #311b92);
+  background:#EBF2FA;
   border-radius: 10px;
+  min-width: 15rem;
   max-width: 15rem;
-  min-height: 12rem;
+  min-height: 13rem;
+  max-height: 1rem;
 }
 .QuizTitleCard2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  min-height: 8rem;
-  max-width: 15rem;
-  cursor: point;
-  background: linear-gradient(to bottom, #4a148c, #311b92);
-  border-radius: 10px;
 }
 .edit {
  
@@ -197,10 +196,10 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   margin-top: 10px;
 }
 .name {
-  padding: 1rem;
+  color: #064789;
   text-align: center;
   /* margin-top: 1.4rem; */
-  color: white;
+ 
 }
 .link {
   text-decoration: none;
