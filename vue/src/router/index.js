@@ -8,7 +8,9 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Quizzes from '../views/Quizzes.vue'
+import UserQuizzes from '../views/UserQuizzes.vue'
 import Quiz from '../views/Quiz.vue'
+
 
 Vue.use(Router)
 
@@ -83,7 +85,7 @@ const router = new Router({
     {
       path:"/user-categories/:id",
       name:"userQuizList",
-      component: Quizzes,
+      component: UserQuizzes,
       meta:{
         breadcrumb:'Quizzes',
         requiresAuth: true

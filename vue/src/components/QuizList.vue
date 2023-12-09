@@ -8,12 +8,12 @@
       :to="{ name: 'Quiz', params: { quizId: quiz.quizId } }"
     >
     <b-button  block variant="primary" @click="editQuiz(existingQuizData),   modalShow = !modalShow">Edit</b-button>
-      <!-- <div class="quiz-box"> -->
+    
         <h1 class="name">{{ quiz.quizName }}</h1>
 
         
 
-<b-modal v-model="modalShow">
+<b-modal v-model="modalShow" hide-footer>
   <edit-quiz
       :quizData="this.quizData"
       :quiz="this.quiz"
@@ -64,19 +64,12 @@ import quizService from "../services/QuizService";
 export default {
   data() {
     return {
+      quizData: this.quizData,
       modalShow: false,
-      sampleQuiz: {
-        quizName: "Sample Quiz",
-        questionAnswers: [
-          { question: "Sample Question 1", answer: "Sample Answer 1" },
-          { question: "Sample Question 2", answer: "Sample Answer 2" },
-        ],
-      },
       existingQuizData: {
         ...this.quiz,
         questionAnswers: [],
       },
-      isModalOpen: false,
       editButton: true,
     };
   },

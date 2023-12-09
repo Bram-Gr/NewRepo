@@ -1,31 +1,46 @@
 <template>
-  <div class="quiz-page-main">
+    <div class="quiz-page-main">
+  
+      <div class="quizzes">
+         <!-- conditionally displays Category Name or Custom -->
+  <div  class="head">
+    <div  class="custom">CUSTOM</div>
+   
+  </div>
 
-    <div class="quizzes">
-       <!-- conditionally displays Category Name or Custom -->
-<div class="head">
-   <h1 class="cat">{{ category }}</h1>  
-</div>
+  
+        <h1 class="user-q">
+          {{ name.toUpperCase() }}'S QUIZZES
+        </h1>
+        <div class="quizzes-list">
+          <quiz-list
+            class="quiz-list"
+            v-for="(uniqueQuiz, index) in quizzes.slice().reverse()"
+            :key="index"
+            :quiz="uniqueQuiz"
+          />
+        </div>
+  
+        <div class="create">      
+          <b-button block variant="primary" @click="modalShow = !modalShow"
+            >Create Quiz</b-button
+          ><b-modal v-model="modalShow">
+            <create-quiz />
+          </b-modal>
+        </div>
 
-      <div class="q-quiz">
-        <quiz-list
-          class="quiz-list"
-          v-for="(uniqueQuiz, index) in quizzes.slice().reverse()"
-          :key="index"
-          :quiz="uniqueQuiz"
-        />
       </div>
     </div>
-  </div>
-</template>
+  </template>
+  
 
 <script>
 import quizList from "../components/QuizList";
 import quizService from "../services/QuizService";
-import CategoryService from "../services/CategoryService";
+import createQuiz from "../components/CreateQuiz";
 export default {
-  components: { quizList },
-  data() {
+    components: { quizList, createQuiz },
+    data() {
     return {
       modalShow: false,
       category: null,
@@ -35,42 +50,7 @@ export default {
       name: this.$store.state.user.username,
     };
   },
-  computed: {
-    uniqueQuizzes() {
-      // Use a Set to store unique quiz names
-      const uniqueNames = new Set();
-
-      // Filter out duplicate quiz names and store in an array
-      const filteredQuizzes = this.quizzes.filter((quiz) => {
-        if (!uniqueNames.has(quiz.quizName)) {
-          uniqueNames.add(quiz.quizName);
-          return true;
-        }
-        return false;
-      });
-
-      return filteredQuizzes;
-    },
-    routeParamsCheck() {
-      return "id" in this.$route.params;
-    },
-  },
-  mounted() {
-    CategoryService.getCategories().then((response) => {
-      console.log(response.data);
-
-      const categoryData = response.data[this.$route.params.categoryId - 1];
-
-      if (categoryData && categoryData.categoryName) {
-
-        this.category = categoryData.categoryName.toUpperCase();
-      } else {
-        // Handle the case where categoryData or categoryName is undefined
-        console.error(
-          `Category with ID ${this.$route.params.categoryId} not found or does not have a valid name.`
-        );
-      }
-    });
+  mounted(){
     try {
       const routeParams = this.$route.params;
 
@@ -93,11 +73,13 @@ export default {
       console.error(error);
     }
   },
+
   created() {
     window.scrollTo(0, 0);
   },
-};
+}
 </script>
+
 
 <style scoped>
 
