@@ -43,10 +43,14 @@ export default {
 </script>
 <style scoped>
 a{
+  font-weight: bold;
   text-decoration: none;
-  color:black;
+  color:black ;
+  /* text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
+
 }
 .breadcrumb-item.active {
     color: transparent;
 }
+
 </style>

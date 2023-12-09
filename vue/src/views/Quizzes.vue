@@ -3,11 +3,10 @@
 
     <div class="quizzes">
        <!-- conditionally displays Category Name or Custom -->
-       <div v-if="category" class="head">
-      <h1 class="cat">{{ category }}</h1>  
-    </div>
-    <div v-else class="custom">CUSTOM</div>    
-
+<div v-show="category !== null" class="head">
+   <h1 class="cat">{{ category }}</h1>  
+</div>
+<div v-show="category === null" class="custom">CUSTOM</div>
    
 
 
@@ -135,6 +134,7 @@ export default {
 </script>
 
 <style scoped>
+
 .create{
   padding-top: 2rem;
   display: flex;
@@ -147,7 +147,7 @@ button{
 }
 h1.user-q {
   text-decoration: none;
-  color: #064789;
+  color: black;
 }
 .q-quiz {
   margin-top: 14rem;
@@ -164,7 +164,7 @@ h1.user-q {
   font-size: 5rem;
   font-weight:bold;
   text-align: center;
-  color: white;
+
 }
 
 .custom{
@@ -198,7 +198,6 @@ h1.user-q{
 }
 .cat{
   font-size: 4rem;
-  color: white;
 }
 h1{
 padding-top: 1.6rem;

@@ -1,7 +1,7 @@
 <template>
   <!-- should be called QuizCard.vue, note for refactor -->
   <div>
-  <div class="QuizTitleCard1"  v-if="quiz.categoryId === 6">
+  <div class="QuizTitleCard1" @click="redirectToQuiz"   v-if="quiz.categoryId === 6">
 
     <router-link
       class="link"
@@ -115,6 +115,7 @@ export default {
     },
 
     editQuiz(quiz) {
+    event.stopPropagation();
       this.isModalOpen = true;
       this.editButton = false;
       event.preventDefault();
@@ -168,7 +169,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 .QuizTitleCard1, .QuizTitleCard2{
   border: 1px solid #679436;
   /* color: #064789; */
-  cursor: point;
+  cursor: pointer;
   background:#EBF2FA;
   border-radius: 10px;
   min-width: 15rem;
@@ -180,7 +181,6 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 .edit {
  

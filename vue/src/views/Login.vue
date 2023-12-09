@@ -74,25 +74,31 @@ h1{
 .input{
   margin-top: .3rem;
   background-color: transparent;
-  border: .5px solid white;
+  border: .5px solid #427AA1 ;
+}
+button.sign-in{
+background-color: rgb(94, 94, 94);
 }
 .sign-in{
   margin-top: 1rem;
   margin-left:10rem;
   margin-bottom: 1rem;
   cursor: pointer;
+  color: white;
 }
 h1{
   font-size: 2rem;
   margin-bottom: 2rem;
 }
-p .route, .form-container, .input, .sign-in{
+p .route, .form-container, .input{
   /* font-size:1rem; */
   background-color: transparent;
-  color:white;
+  color: #064789;
   font-size: 1.5rem;
 }
 .form-container{
+  border-radius: 10px;
+  outline: 1px solid #A5BE00;
   text-align: right;
   display: flex;
   padding:1rem;
@@ -100,7 +106,7 @@ padding-right: 1.5rem;
 padding-left: 1.5rem;
  align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #4a148c, #311b92);
+  background: #EBF2FA;
   margin-top: 8rem;
 }
 

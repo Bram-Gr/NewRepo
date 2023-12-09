@@ -83,25 +83,26 @@ export default {
 .input{
   margin-top: .3rem;
   background-color: transparent;
-  border: .5px solid white;
+  border: .5px solid #427AA1 ;
 
 }
-.register{
+button.register{
   margin-top: 1rem;
   margin-left:12rem;
   margin-bottom: 1rem;
   cursor: pointer;
+  background-color: rgb(94, 94, 94);
+  color: white;
 }
 h1{
   text-align: left;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
   margin-bottom: 2rem;
 }
  p .route, .form-container, .input, .register{
   
   background-color: transparent;
-  color:white;
+  color: #064789;
   font-size: 1.5rem;
 }
 
@@ -111,6 +112,8 @@ h1{
   display: flex;
 }
 .form-container{
+  border-radius: 10px;
+  outline: 1px solid #A5BE00;
   text-align: right;
   display: flex;
   padding:1rem;
@@ -118,7 +121,7 @@ padding-right: 1.5rem;
 padding-left: 1.5rem;
  align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #4a148c, #311b92);
+  background: #EBF2FA;
   margin-top: 8rem;
  
 }
