@@ -64,7 +64,7 @@ beforeDestroy() {
 .bread-crumb{
   z-index: 1;
   position:absolute;
-  top: 100px;    
+  top: 65px;    
     left: 190px;
 }
 #nav{

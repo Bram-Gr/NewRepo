@@ -57,6 +57,7 @@ export default {
     };
   },
   mounted(){
+
     try {
       const routeParams = this.$route.params;
 
@@ -83,6 +84,13 @@ export default {
   created() {
     window.scrollTo(0, 0);
   },
+  methods:{
+    hideModal() {
+      this.modalShow = false
+      this.$bvModal.hide() 
+  
+    },
+  }
 }
 </script>
 
