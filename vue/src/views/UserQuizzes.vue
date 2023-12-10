@@ -96,7 +96,8 @@ export default {
 
 
 <style scoped>
-button.btn.close{
+@media  screen and (min-width: 200px) {
+  button.btn.close{
   padding: .5rem;
 }
 
@@ -127,7 +128,7 @@ h1.user-q {
   margin-left: 2rem;
 }
 .custom{
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight:bold;
   text-align: center;
 
@@ -162,9 +163,7 @@ h1.user-q{
   position: absolute;
   top:0px;
 }
-.cat{
-  font-size: 4rem;
-}
+
 h1{
 padding-top: 1.6rem;
 }
@@ -220,4 +219,13 @@ h1.name {
 button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
     width: 40%;
 }
+}
+@media  screen and (min-width: 500px) {
+  .custom{
+  font-size: 5rem;
+
+}
+
+}
+
 </style>

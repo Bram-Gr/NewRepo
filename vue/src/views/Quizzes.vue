@@ -101,7 +101,12 @@ export default {
 
 <style scoped>
 
-.create{
+
+
+@media  screen and (min-width: 200px) {
+
+
+  .create{
   padding-top: 2rem;
   display: flex;
   justify-content: center;
@@ -163,7 +168,8 @@ h1.user-q{
   top:0px;
 }
 .cat{
-  font-size: 4rem;
+  margin-top: 2rem;
+  font-size: 2rem;
 }
 h1{
 padding-top: 1.6rem;
@@ -204,16 +210,14 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 .quiz-page-main {
   margin-top: 8rem;
 }
-.quiz-page {
-  color: white;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  /* margin: 5rem; */
-  justify-content: center;
+
+}
+@media  screen and (min-width: 500px) {
+  .cat{
+  margin-top: 0rem;
+  font-size: 4rem;
 }
 
-h1.name {
-  color: black;
 }
+
 </style>
