@@ -8,7 +8,7 @@
 </div>
 
       <div class="q-quiz">
-        <quiz-list
+        <quiz-card
           class="quiz-list"
           v-for="(uniqueQuiz, index) in quizzes.slice().reverse()"
           :key="index"
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import quizList from "../components/QuizList";
+import quizCard from "../components/QuizCard";
 import quizService from "../services/QuizService";
 import CategoryService from "../services/CategoryService";
 export default {
-  components: { quizList },
+  components: { quizCard },
   data() {
     return {
       modalShow: false,

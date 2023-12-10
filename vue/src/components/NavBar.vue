@@ -1,7 +1,8 @@
 <template>
   <b-navbar id="main" toggleable="md" type="dark" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
     <div  class="b-nav">
-    <b-navbar-brand class="logo" to="/">QUIZZICAL</b-navbar-brand>
+    <b-navbar-brand v-if="fullWidth" class="logo" to="/">QUIZZICAL</b-navbar-brand>
+    <b-navbar-brand v-else class="logo" to="/">Q</b-navbar-brand>
     <sub-nav v-show="!view.topOfPage" class="bread-crumb"/>
   </div>
     <b-navbar-toggle class="navbar-toggler-icon" target="nav-collapse">::</b-navbar-toggle>
@@ -32,7 +33,7 @@ import SubNav from './SubNav.vue';
     data() {
       return {
        
-       
+       fullWidth:true,
         checkbox: false,
         view: {
           topOfPage: true,
@@ -42,8 +43,21 @@ import SubNav from './SubNav.vue';
     beforeMount() {
       window.addEventListener("scroll", this.handleScroll);
     },
-  
+   mounted(){
+             this.getFullWidth();
+             window.addEventListener('resize', this.handleResize);
+   },
+   beforeDestroy(){
+    this.getFullWidth();
+    window.removeEventListener('resize', this.handleResize);
+   },
     methods: {
+      getFullWidth(){
+        this.fullWidth = window.innerWidth > 438;
+      },
+      handleResize(){
+           this.getFullWidth();
+      },
          handleScroll() {
         if (window.scrollY >= 100) {
           if (this.view.topOfPage) this.view.topOfPage = false ;

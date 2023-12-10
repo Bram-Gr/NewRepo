@@ -13,7 +13,7 @@
           {{ name.toUpperCase() }}'S QUIZZES
         </h1>
         <div class="quizzes-list">
-          <quiz-list
+          <quiz-card
             class="quiz-list"
             v-for="(uniqueQuiz, index) in quizzes.slice().reverse()"
             :key="index"
@@ -41,11 +41,11 @@
   
 
 <script>
-import quizList from "../components/QuizList";
+import quizCard from "../components/QuizCard";
 import quizService from "../services/QuizService";
 import createQuiz from "../components/CreateQuiz";
 export default {
-    components: { quizList, createQuiz },
+    components: { quizCard, createQuiz },
     data() {
     return {
       modalShow: false,
