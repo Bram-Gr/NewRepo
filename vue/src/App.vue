@@ -23,20 +23,6 @@ export default {
      view: {
           topOfPage: true,
         }
-      // items: [
-      //     {
-      //       text: 'Select',
-      //       to:{name: 'select'}
-      //     },
-      //     {
-      //       text: 'Quizzes',
-      //       to:{path: "/categories/:categoryId"}
-      //     },
-      //     {
-      //       text: 'Quiz',
-      //       to:{path: "/categories/:quizId/quizzes"}
-      //     }
-      //   ]
         }
     
   },
@@ -61,7 +47,24 @@ beforeDestroy() {
 };
 </script>
 <style scoped>
-.bread-crumb{
+@media  screen and (min-width: 200px) {
+  .bread-crumb{
+  z-index: 1;
+  position:absolute;
+  top: 65px;    
+    left: 80px;
+}
+#nav{
+ display: inline-block;
+
+}
+#app {
+  height: 100vh;
+  /* Other styles */
+}
+}
+@media  screen and (min-width: 500px) {
+  .bread-crumb{
   z-index: 1;
   position:absolute;
   top: 65px;    
@@ -75,5 +78,7 @@ beforeDestroy() {
   height: 100vh;
   /* Other styles */
 }
+}
+
 
 </style>
