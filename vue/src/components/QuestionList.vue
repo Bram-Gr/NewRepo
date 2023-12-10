@@ -30,7 +30,9 @@
   <style scoped>
   .quiz-card {
     color: black;
-    width: 200px;
+    
+    width: 25rem;
+    height: 12rem;
     padding: 16px;
     background-color: beige;
     border: 1px solid #ccc;
@@ -38,6 +40,7 @@
     cursor: pointer;
     transition: box-shadow 0.3s ease;
     margin: 16px;
+    overflow: hidden;
   }
   
   .quiz-card:hover {
@@ -47,15 +50,14 @@
   .question {
     min-height: 6rem;
     font-weight: bold;
-    margin-bottom: 8px;
+
   }
   
   .answer {
     font-weight: bold;
     min-height: 6rem;
-    padding: .5rem;
+
     
-    margin-top: 8px;
   }
   
   .show-answer .answer {

@@ -13,11 +13,14 @@
 
         
 
-<b-modal v-model="modalShow" hide-footer>
+<b-modal v-model="modalShow" title="Edit Quiz" >
   <edit-quiz
       :quizData="this.quizData"
       :quiz="this.quiz"
       :submitFunction="submitEdit"/>
+      <template #modal-footer>
+  <b-button class="close" @click="hideModal">Close</b-button>
+</template>
 </b-modal>
 
 
@@ -78,6 +81,12 @@ export default {
     quiz: Object,
   },
   methods: {
+    hideModal() {
+      this.modalShow = false
+      this.$bvModal.hide() 
+      // this.$root.$emit('bv::hide::modal')
+      console.log("close")
+    },
     redirectToQuiz() {
       // Access the route information from the router-link and navigate programmatically
       this.$router.push({
@@ -144,7 +153,9 @@ export default {
 </script>
 
 <style scoped>
-
+button.btn.close{
+  padding: .5rem;
+}
 button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
     cursor: pointer;
     margin: .6rem;
@@ -160,6 +171,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 
 } */
 .QuizTitleCard1, .QuizTitleCard2{
+
   border: 1px solid #679436;
   /* color: #064789; */
   cursor: pointer;
@@ -169,11 +181,13 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   max-width: 15rem;
   min-height: 13rem;
   max-height: 1rem;
+  overflow: hidden;
 }
 .QuizTitleCard2{
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .edit {
  
@@ -192,9 +206,14 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   color: #064789;
   text-align: center;
   /* margin-top: 1.4rem; */
- 
+
 }
 .link {
   text-decoration: none;
+  
+}
+h1.name{
+display: flex;
+flex-wrap: wrap;
 }
 </style>

@@ -22,10 +22,16 @@
         </div>
   
         <div class="create">      
-          <b-button block variant="primary" @click="modalShow = !modalShow"
+          <b-button  block variant="primary" @click="modalShow = !modalShow"
             >Create Quiz</b-button
-          ><b-modal v-model="modalShow">
-            <create-quiz />
+          >
+
+          <b-modal v-model="modalShow">
+          
+            <create-quiz  />
+            <template #modal-footer>
+  <b-button class="close" @click="hideModal">Close</b-button>
+</template>
           </b-modal>
         </div>
 
@@ -82,17 +88,21 @@ export default {
 
 
 <style scoped>
+button.btn.close{
+  padding: .5rem;
+}
 
 .create{
+ 
   padding-top: 2rem;
   display: flex;
   justify-content: center;
 }
-button{
+/* button{
   display: inline-block;
   width: 50%;
   border-radius: 20px;
-}
+} */
 h1.user-q {
   text-decoration: none;
   color: black;
@@ -157,6 +167,7 @@ padding-top: 1.6rem;
 }
 .create-button {
   margin-top: 1.26rem;
+ 
 }
 
 .create-button,
@@ -197,5 +208,8 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 
 h1.name {
   color: black;
+}
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    width: 40%;
 }
 </style>

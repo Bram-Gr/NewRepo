@@ -2,28 +2,24 @@
   <div class="modal-content">
     <form @submit="submitEdit">
       <label for="quizName">Quiz Name:</label>
-      <b-form-textarea class="name" id="textarea-no-resize" v-model="quizName" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
-      <!-- <textarea class="input" id="quizName" v-model="quizName" required /> -->
-
+      <b-form-textarea placeholder="26 character maximum" :state="quizName.length <= 26 && quizName.length != 0" class="name" id="textarea-no-resize" v-model="quizName" required rows="3" no-resize></b-form-textarea>
       <div class="questions" v-for="(question, index) in questions" :key="index">       
         <label>Question:</label>
-        <!-- <b-form-input id="questionAnswers" v-model="questions[index].question" required type="text" debounce="500"></b-form-input> -->
-        <b-form-textarea id="textarea-no-resize" v-model="questions[index].question" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
-        <!-- <textarea id="questionAnswers" class="input" v-model="questions[index].question" required />&nbsp;&nbsp;&nbsp; -->
+        <b-form-textarea :validated="state=true" placeholder="250 character maximum" :state="questions[index].question.length <= 250 && questions[index].question.length != 0" id="textarea-no-resize" v-model="questions[index].question" required  rows="3" no-resize></b-form-textarea>
         <label>Answer:</label>
-        <!-- <b-form-input id="questionAnswers" v-model="questions[index].answer" required  type="text" debounce="500"></b-form-input> -->
-        <b-form-textarea id="textarea-no-resize" v-model="questions[index].answer" required placeholder="Fixed height textarea" rows="3" no-resize></b-form-textarea>
-        <!-- <textarea id="questionAnswers" class="input" v-model="questions[index].answer" required /> -->
-
+        <b-form-textarea placeholder="250 character maximum" :state="questions[index].answer.length <= 250 && questions[index].answer.length != 0" id="textarea-no-resize" v-model="questions[index].answer" required  rows="3" no-resize></b-form-textarea>
         <b-button class="rm" size="sm" pill type="button" @click="removeQuestion(index)">Remove Question</b-button>
 <hr>
+
       </div>
       <div>
         <b-button-group class="mx-1">
       <b-button  @click="addQuestion">Add Question</b-button>
       <b-button  type="submit">Save</b-button>
       <b-button   @click="deleteQuiz(quiz)">Delete</b-button>
+     
     </b-button-group>
+   
   </div>
 
     </form>
@@ -31,6 +27,7 @@
 </template>
 
 <script>
+
 import quizService from "../services/QuizService";
 export default {
   props: {
@@ -40,6 +37,7 @@ export default {
   },
   data() {
     return {
+      textValue:'',
       quizName: '',
       questions: this.quizData
     };
@@ -52,6 +50,20 @@ export default {
     }
   },
   methods: {
+    
+  //   checkInput(event){
+  //  if (this.questions[0].question.length > 300){
+  //   // console.log(this.questions[0].answer)
+  //   event.preventDefault();
+  //    alert("Invalid form input")
+  //  }
+  //   },
+        checkChars(event){
+   if (this.quizName.length > 26){
+    event.preventDefault();
+     alert("Invalid form input")
+   }
+    },
     deleteQuiz(quiz) {
       const userConfirm = confirm(
         "Would you like to delete " + quiz.quizName + "?"
@@ -73,6 +85,8 @@ export default {
       }
     },
     submitEdit() {
+      // this.checkInput(event);
+      this.checkChars(event);
       const payload = {
         quizId: this.quiz.quizId, // Assuming you have a quizId
         quizName: this.quizName,
@@ -92,8 +106,8 @@ export default {
     },
     closeModal() {
       this.$emit('closeModal');
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -127,9 +141,7 @@ export default {
 .questions, .name{
   margin-top: 0.2rem;
 }
-.name{
 
-}
 
 /* .input {
   font-size:1rem;

@@ -1,22 +1,28 @@
 <template>
-    <div>
-      <form class="not-modal" @submit="submitQuiz">
-        <label for="quizName">Quiz Name:</label>
-        <textarea  class="input" id="quizName" v-model="quizName" required/>
+    <div class="modal-content">
+      <form @submit="submitQuiz">
+      <label for="quizName">Quiz Name:</label>
+      <b-form-textarea placeholder="26 character maximum" :state="quizName.length <= 26 && quizName.length != 0" class="name" id="textarea-no-resize" v-model="quizName" required rows="3" no-resize></b-form-textarea>
+      <div class="questions" v-for="(question, index) in questions" :key="index">       
+        <label>Question:</label>
+        <b-form-textarea :validated="state=true" placeholder="250 character maximum" :state="questions[index].question.length <= 250 && questions[index].question.length != 0" id="textarea-no-resize" v-model="questions[index].question" required  rows="3" no-resize></b-form-textarea>
+        <label>Answer:</label>
+        <b-form-textarea placeholder="250 character maximum" :state="questions[index].answer.length <= 250 && questions[index].answer.length != 0" id="textarea-no-resize" v-model="questions[index].answer" required  rows="3" no-resize></b-form-textarea>
+        <b-button class="rm" size="sm" pill type="button" @click="removeQuestion(index)">Remove Question</b-button>
+<hr>
 
-        <div class="questions" v-for="(question, index) in questions" :key="index">
-          <label>Question:</label>
-          <textarea class="input" v-model="questions[index].question" required/>&nbsp;&nbsp;&nbsp;&nbsp;
-          <label>  Answer:</label>
-          <textarea class="input" v-model="questions[index].answer" required/>         
-        <button type="button" @click="removeQuestion(index)">Remove Question</button>
-        </div>
+      </div>
+      <div>
+        <b-button-group class="mx-1">
+      <b-button  @click="addQuestion">Add Question</b-button>
+      <b-button  type="submit">Save</b-button>
 
-      <div class="bottom-buttons">
-        <button type="button" @click="addQuestion">Add Question</button>
-        <button type="submit">Save</button>
-      </div> 
-      </form>
+     
+    </b-button-group>
+   
+  </div>
+
+    </form>
     </div>
 
 </template>
@@ -79,7 +85,7 @@ export default {
   flex-wrap: wrap;
 }
 label{
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size:1.4rem;
 }
 .not-modal{
@@ -102,11 +108,9 @@ h2 {
 }
 
 button {
-  font-size: 1rem;
-  background-color: transparent;
-  color: white;
+
   border: none;
-  padding: 10px 20px;
+
   cursor: pointer;
   margin-top: 10px;
 }
