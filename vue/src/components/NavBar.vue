@@ -1,11 +1,11 @@
 <template>
-  <b-navbar id="main" toggleable="md" type="dark" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
+  <b-navbar id="main" toggleable="md" type="light" class="navigation-menu navigation-container" :class="{ onScroll: !view.topOfPage }">
     <div  class="b-nav">
     <b-navbar-brand v-if="fullWidth" class="logo" to="/">QUIZZICAL</b-navbar-brand>
     <b-navbar-brand v-else class="logo" to="/">Q</b-navbar-brand>
     <sub-nav v-show="!view.topOfPage" class="bread-crumb"/>
   </div>
-    <b-navbar-toggle class="navbar-toggler-icon" target="nav-collapse">::</b-navbar-toggle>
+    <b-navbar-toggle class="navbar-toggler-icon" target="nav-collapse">&nbsp;</b-navbar-toggle>
 
     <b-collapse  class="navigation-menu-labels" is-nav id="nav-collapse">
       <b-navbar-nav class="ml-auto">
@@ -53,7 +53,7 @@ import SubNav from './SubNav.vue';
    },
     methods: {
       getFullWidth(){
-        this.fullWidth = window.innerWidth > 438;
+        this.fullWidth = window.innerWidth > 500;
       },
       handleResize(){
            this.getFullWidth();
@@ -101,9 +101,9 @@ import SubNav from './SubNav.vue';
   
   <style scoped>
 
-.navbar-toggler-icon{
+/* .navbar-toggler-icon{
   color: black;
-}
+} */
   .b-nav{
     display:flex;
     flex-direction: row;
@@ -172,14 +172,19 @@ import SubNav from './SubNav.vue';
   .onScroll {
     background: white;
   }
-  .navigation-menu a {
+  .navigation-menu a{
+    padding: 0rem;
+    font-size: 1.2rem;
     text-decoration: none;
     color: black;
+  }
+  .b-nav > .logo{
+  font-size: 2rem;
   }
   .navigation-menu button {
     text-decoration: none;
     border: none;
-   
+
   }
   .logo{
   font-size: 2rem;
@@ -199,10 +204,10 @@ import SubNav from './SubNav.vue';
   } */
 
   
-  #toggleMenu,
+  /* #toggleMenu, */
   .navigation-menu label {
     display: none;
-    
+    /* color: black; */
   }
   
   @media screen and (max-width: 768px) {
@@ -236,9 +241,6 @@ import SubNav from './SubNav.vue';
       margin-top: 10px;
       padding: 20px;
     }
-  
-    #toggleMenu:checked ~ .main-menu {
-      max-height: 75rem;
-    }
+
   }
   </style>

@@ -2,7 +2,7 @@
   <div class="home">
     <div class="title">
 
-      <h1 class="Quizzical">Category Select</h1>
+      <h1 class="Quizzical">Select Category</h1>
     </div>
    
 <div class="categories">
@@ -77,6 +77,10 @@ export default {
 
 <style scoped>
 @media screen and (min-width: 150px){
+  .home{
+    display: flex;
+    flex-direction: column;
+  }
   p{
     position: relative;
       font-size: 24px;
@@ -94,14 +98,15 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-     font-size: 4rem;
+     font-size: 2rem;
   }
 
  .categories{
-  margin-right:2.7rem;
+  /* margin-right:1.1rem; */
   margin-top: 1rem;
   display:flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   padding-bottom:1rem;
  }
@@ -114,7 +119,7 @@ export default {
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 1rem;
+    padding: 0rem;
     margin-top:5.6rem;
     color: #064789;
     /* background-color:rgb(41, 41, 201) ; */
@@ -131,11 +136,21 @@ export default {
     text-transform: uppercase;
   }
 }
-@media screen and (min-width: 244px){
-
+@media screen and (min-width: 400px){
+  .Quizzical{
+     font-size: 3rem;
+  }
 }
 @media screen and (min-width: 658px){
-
+  .title{
+    padding: 1rem;
+  }
+  .Quizzical{
+     font-size: 4rem;
+  }
+  .categories{
+  /* margin-right:2rem; */
+ }
 .title {
   font-size: 3rem;
 }

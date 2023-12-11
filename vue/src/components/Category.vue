@@ -20,25 +20,41 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-.category-name{
+@media screen and (min-width: 150px){
+
+  .category-name{
   color:white;
   padding: .3rem;
 }
 .card {
-  min-height: 10rem;
+  min-height: 6rem;
   text-align: center;
-  margin-top:1rem;
-  height: 10rem;
-  margin-left:1rem;
+  /* margin-top:1rem; */
+  height: 6rem;
+  /* margin-left:1rem; */
+  margin: .5rem;
   display: flex;
 justify-content: center;
 align-items:center;
-width:20rem;
+width:15rem;
 background: linear-gradient(to bottom, #427AA1 , #463a7d);
 border-radius: 10px;
   }
   
 
+}
+@media screen and (min-width: 400px){
+ 
+}
+@media screen and (min-width: 658px){
+  .card {
+  min-height: 10rem;
+
+width:20rem;
+
+  }
+
+}
 </style>

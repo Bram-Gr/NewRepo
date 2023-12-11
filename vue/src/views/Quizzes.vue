@@ -121,7 +121,7 @@ h1.user-q {
   color: black;
 }
 .q-quiz {
-  margin-top: 14rem;
+  margin-top: 10rem;
   /* color: white; */
   display: flex;
   flex-wrap: wrap;
@@ -138,20 +138,7 @@ h1.user-q {
 
 }
 
-.custom{
-  padding-top: 5rem;
-  align-items: flex-end;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  z-index: -1;
-  background-color: #427AA1;
-  left: 0;
-  right: 0;
-  position: absolute;
-  top:0px;
-  height: 12rem;
-}
+
 h1.user-q{
   padding-top: 3rem;
 }
@@ -160,7 +147,7 @@ h1.user-q{
   display: flex;
   flex-wrap: wrap;
   z-index: -1;
-  background-color: #427AA1;
+  /* background-color: #427AA1; */
   left: 0;
   right: 0;
   height: 9rem;
@@ -214,7 +201,7 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
 }
 @media  screen and (min-width: 500px) {
   .cat{
-  margin-top: 0rem;
+  margin-top: .7rem;
   font-size: 4rem;
 }
 

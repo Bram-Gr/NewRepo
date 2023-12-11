@@ -80,7 +80,13 @@ export default {
 </script>
 
 <style scoped>
-.input{
+
+
+
+@media  screen and (min-width: 200px) {
+
+
+  .input{
   margin-top: .3rem;
   background-color: transparent;
   border: .5px solid #427AA1 ;
@@ -96,14 +102,14 @@ button.register{
 }
 h1{
   text-align: left;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
 }
  p .route, .form-container, .input, .register{
   
   background-color: transparent;
   color: #064789;
-  font-size: 1.5rem;
+  font-size: .8rem;
 }
 
 #register{
@@ -132,4 +138,16 @@ padding-left: 1.5rem;
 label {
   margin-right: 0.5rem;
 }
+}
+@media  screen and (min-width: 500px) {
+  h1{
+  font-size: 2rem;
+}
+ p .route, .form-container, .input, .register{
+  font-size: 1.5rem;
+}
+
+}
+
+
 </style>

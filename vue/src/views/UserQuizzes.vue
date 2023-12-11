@@ -113,15 +113,9 @@ export default {
   border-radius: 20px;
 } */
 h1.user-q {
+  text-align: center;
   text-decoration: none;
   color: black;
-}
-.q-quiz {
-  margin-top: 14rem;
-  /* color: white; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 .create-form {
   flex-wrap: wrap;
@@ -141,7 +135,7 @@ h1.user-q {
   display: flex;
   flex-wrap: wrap;
   z-index: -1;
-  background-color: #427AA1;
+  /* background-color: #427AA1; */
   left: 0;
   right: 0;
   position: absolute;
@@ -156,7 +150,7 @@ h1.user-q{
   display: flex;
   flex-wrap: wrap;
   z-index: -1;
-  background-color: #427AA1;
+  /* background-color: #427AA1; */
   left: 0;
   right: 0;
   height: 9rem;
@@ -193,7 +187,7 @@ padding-top: 1.6rem;
   display: flex;
   margin-top: 2rem;
   padding: 0.5rem;
-  margin-left: 2rem;
+
   color: white;
   /* background: rgba(255, 253, 253, 0.00);
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */

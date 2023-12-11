@@ -68,7 +68,10 @@ export default {
 </script>
 
 <style scoped>
-h1{
+
+
+@media  screen and (min-width: 200px) {
+  h1{
   text-align: left;
 }
 .input{
@@ -87,14 +90,14 @@ background-color: rgb(94, 94, 94);
   color: white;
 }
 h1{
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
 }
 p .route, .form-container, .input{
   /* font-size:1rem; */
   background-color: transparent;
   color: #064789;
-  font-size: 1.5rem;
+  font-size: .8rem;
 }
 .form-container{
   border-radius: 10px;
@@ -121,4 +124,17 @@ padding-left: 1.5rem;
 label {
   margin-right: 0.5rem;
 }
+}
+@media  screen and (min-width: 500px) {
+
+  h1{
+  font-size: 2rem;
+}
+p .route, .form-container, .input{
+  font-size: 1.5rem;
+}
+}
+
+
+
 </style>

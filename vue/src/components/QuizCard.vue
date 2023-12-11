@@ -212,8 +212,8 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
   text-decoration: none;
   
 }
-h1.name{
+/* h1.name{
 display: flex;
 flex-wrap: wrap;
-}
+} */
 </style>

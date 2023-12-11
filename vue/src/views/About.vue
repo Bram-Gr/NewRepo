@@ -17,7 +17,11 @@
 
 
 <style scoped>
-#About{
+
+
+@media  screen and (min-width: 200px) {
+
+  #About{
   padding-top: 2rem;
   color: black;
 }
@@ -30,9 +34,9 @@ h1{
     padding-bottom: 2rem;
 }
 p{
-    padding-right:10rem;
-    padding-left: 10rem;
-    font-size: 1.3rem;
+    padding-right:2rem;
+    padding-left: 2rem;
+    font-size: 1rem;
 }
 button{
   cursor: pointer;
@@ -51,4 +55,19 @@ border-radius: 10px;
 justify-content: center;
 align-items:center;
   }
+
+}
+@media  screen and (min-width: 750px) {
+  p{
+    padding-right:10rem;
+    padding-left: 10rem;
+    font-size: 1.3rem;
+}
+}
+
+
+
+
+
+
 </style>
