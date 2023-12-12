@@ -2,14 +2,14 @@
   <div id="About">
     <h1>ABOUT</h1>
     <p>
-        This version is of QUIZZICAL is here to help me study as I keep myself afloat in the vast sea of job rejections
+        This version of <span style="text-shadow: 0px 0px 1.3px #064789;">QUIZZICAL is here</span>  to help me study as I keep myself afloat in the <span style="font-style: italic; font-weight:bold">vast sea</span> of job rejections
         uponst which I sail. QUIZZICAL's roadmap entails a profile page where users can personalize their experience
         with a user icon and see their quizzes/favorited quizzes.
     </p>
    <p>
-         Future updates will include the community quiz category
+         Future updates will include the <span style="text-shadow: 0px 0px 1.3px #064789;">Community Quiz</span> category
         where all users can submit their quizzes to the quiz-fam. Any flagged quizzes will be reviewed and are subject 
-        to removal. Top quizzes will be featured and plans for AI generated multiple choice options are in the works as well.
+        to removal. Top quizzes will be featured and plans for <span style="font-style: italic; font-weight:bold">AI generated multiple choice options</span> are in the works as well.
    </p>
   </div>
 </template>
@@ -20,7 +20,9 @@
 
 
 @media  screen and (min-width: 200px) {
-
+p, h1{
+  font-family: Dhurjati;
+}
   #About{
   padding-top: 2rem;
   color: black;

@@ -186,8 +186,9 @@ padding-top: 1.6rem;
   justify-content: center;
   display: flex;
   margin-top: 2rem;
-  padding: 0.5rem;
-
+  /* padding: 0.5rem; */
+  padding-right:9.5rem;
+  padding-left: 9.5rem;
   color: white;
   /* background: rgba(255, 253, 253, 0.00);
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */

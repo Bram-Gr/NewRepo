@@ -121,6 +121,8 @@ h1.user-q {
   color: black;
 }
 .q-quiz {
+  padding-right:10rem;
+  padding-left: 10rem;
   margin-top: 10rem;
   /* color: white; */
   display: flex;

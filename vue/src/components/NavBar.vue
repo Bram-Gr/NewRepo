@@ -110,9 +110,11 @@ import SubNav from './SubNav.vue';
     flex-wrap: wrap;
   }
   .bread-crumb{
+    margin-top:1.2rem;
     display: flex;
     justify-content: flex-end;
     align-items:flex-end;
+    padding-bottom: 0rem;
   }
 
   .navbar-expand-md .navbar-collapse {
@@ -158,9 +160,12 @@ import SubNav from './SubNav.vue';
     padding-block: 15px;
   }
   #main{
+    padding-right: .3rem;
+    padding-left: .3rem;
+    padding-bottom: 0rem;
     z-index: 1;
   top: 0;
-  padding: 1rem;
+
   width: 100%;
   display: inline-block;
   display: flex;
@@ -171,6 +176,8 @@ import SubNav from './SubNav.vue';
   }
   .onScroll {
     background: white;
+    border-bottom: 1px solid black;
+    box-shadow: 0 2px 2px rgba(91, 137, 189, 0.7);
   }
   .navigation-menu a{
     padding: 0rem;

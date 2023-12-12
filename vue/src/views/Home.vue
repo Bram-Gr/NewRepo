@@ -28,6 +28,7 @@ methods:{
   color: black;
 }
 h1{
+  font-family: Dhurjati;
     padding: 3rem;
     text-align: center;
     font-size: 1rem;

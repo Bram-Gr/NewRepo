@@ -1,3 +1,5 @@
+
+
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users CASCADE;
@@ -28,8 +30,8 @@ CREATE TABLE quizzes (
 CREATE TABLE questions (
     question_id SERIAL PRIMARY KEY,
     quiz_id INTEGER,
-    question VARCHAR(250) NOT NULL,
-    answer VARCHAR(250) NOT NULL,
+    question VARCHAR(2000) NOT NULL,
+    answer VARCHAR(2000) NOT NULL,
     CONSTRAINT fk_quiz FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id)
 );
 
