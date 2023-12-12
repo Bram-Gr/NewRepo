@@ -1,28 +1,24 @@
 <template>
   <div class="home">
     <div class="title">
-
       <h1 class="Quizzical">Select Category</h1>
     </div>
-   
-<div class="categories">
-    <router-link class="link"
-  :to="getQuizListRoute(category.categoryId, user.id)"
-  v-for="category in categories.slice().reverse()"
-  :key="category.categoryId"
->
-  <!-- <category v-if="category.categoryId === 6" @show-alert="showAlert" :category="category" />
+    <div class="categories">
+      <router-link
+        class="link"
+        :to="getQuizListRoute(category.categoryId, user.id)"
+        v-for="category in categories.slice().reverse()"
+        :key="category.categoryId"
+      >
+        <!-- <category v-if="category.categoryId === 6" @show-alert="showAlert" :category="category" />
   <category v-else :category="category" /> -->
-  <category :category="category" />
-
-</router-link>
-</div>
-
+        <category :category="category" />
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 import CategoryService from "../services/CategoryService";
 import Category from "../components/Category";
@@ -40,7 +36,6 @@ export default {
   },
   methods: {
     // showAlert(){
-    //   console.log("reached show alert")
     //   if (confirm(" requires login")){
     //     return ''
     //   }else{
@@ -64,9 +59,7 @@ export default {
     },
   },
   mounted() {
-   
     window.scrollTo(0, 0);
-  
     CategoryService.getCategories().then((response) => {
       this.categories = response.data;
     });
@@ -76,92 +69,90 @@ export default {
 </script>
 
 <style scoped>
-@media screen and (min-width: 150px){
-  .home{
+@media screen and (min-width: 150px) {
+  .home {
     display: flex;
     flex-direction: column;
   }
-  p{
+  p {
     position: relative;
-      font-size: 24px;
-      overflow: hidden;
-      display: inline-block;
+    font-size: 24px;
+    overflow: hidden;
+    display: inline-block;
     display: flex;
     justify-content: center;
   }
-  .Quizzical{
-    padding:2.5rem;
-  flex-wrap: wrap;
+  .Quizzical {
+    padding: 2.5rem;
+    flex-wrap: wrap;
     position: relative;
-      font-size: 24px;     
-      /* display: inline-block; */
+    font-size: 24px;
+    /* display: inline-block; */
     display: flex;
     justify-content: center;
     align-items: center;
-     font-size: 2rem;
+    font-size: 2rem;
   }
 
- .categories{
-  /* margin-right:1.1rem; */
-  margin-top: 1rem;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-bottom:1rem;
- }
+  .categories {
+    /* margin-right:1.1rem; */
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+  }
   /* h1,p{
     color:black;
     font-size:1rem;  
     padding:2rem; 
   } */
-  .title{
+  .title {
     text-align: center;
     justify-content: center;
     flex-wrap: wrap;
     padding: 0rem;
-    margin-top:5.6rem;
+    margin-top: 5.6rem;
     color: #064789;
     /* background-color:rgb(41, 41, 201) ; */
-   /* display: inline-block; */
-   /* width: 100%; */
-   /* background-image: url("../assets/bg2.webp"); */
-   /* background-repeat: no-repeat;
+    /* display: inline-block; */
+    /* width: 100%; */
+    /* background-image: url("../assets/bg2.webp"); */
+    /* background-repeat: no-repeat;
   background-size: cover; */
-  
   }
-  .link{
-    font-size: .5rem;
+  .link {
+    font-size: 0.5rem;
     text-decoration: none;
     text-transform: uppercase;
   }
 }
-@media screen and (min-width: 400px){
-  .Quizzical{
-     font-size: 3rem;
+@media screen and (min-width: 400px) {
+  .Quizzical {
+    font-size: 3rem;
   }
 }
-@media screen and (min-width: 658px){
-  .title{
+@media screen and (min-width: 658px) {
+  .title {
     padding: 1rem;
   }
-  .Quizzical{
-     font-size: 4rem;
+  .Quizzical {
+    font-size: 4rem;
   }
-  .categories{
-  /* margin-right:2rem; */
- }
-.title {
-  font-size: 3rem;
-}
-h1,
-p,.link {
-  font-size: 1.5rem;
-}
-.home {
-
-  color: white;
-}
-
+  .categories {
+    /* margin-right:2rem; */
+  }
+  .title {
+    font-size: 3rem;
+  }
+  h1,
+  p,
+  .link {
+    font-size: 1.5rem;
+  }
+  .home {
+    color: white;
+  }
 }
 </style>

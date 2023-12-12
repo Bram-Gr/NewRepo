@@ -8,7 +8,6 @@ export default {
     this.$store.commit("LOGOUT");
     this.$router.push("/select-page");
     window.scrollTo(0, 0);
-  
-  }
+  },
 };
 </script>

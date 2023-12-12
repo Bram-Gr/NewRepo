@@ -12,7 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 import QuizService from '../services/QuizService'
@@ -21,7 +21,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    categories:[]
+    categories: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -31,7 +31,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -42,16 +42,16 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getCategories(){
-    CategoryService.getCategories().then((response) => {
-      this.categories = response.data;
-    })
-  },
-  getQuizzes(quizId){
-    QuizService.getQuizzesByQuizId(quizId).then((response) => {
-      this.categories = response.data;
-    })
+    getCategories() {
+      CategoryService.getCategories().then((response) => {
+        this.categories = response.data;
+      })
+    },
+    getQuizzes(quizId) {
+      QuizService.getQuizzesByQuizId(quizId).then((response) => {
+        this.categories = response.data;
+      })
+    }
   }
-          }
-  
+
 })

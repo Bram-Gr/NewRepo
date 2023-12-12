@@ -1,4 +1,4 @@
-<!-- components/Breadcrumbs.vue -->
+
 
 <template>
   <b-breadcrumb :items="breadcrumbItems"></b-breadcrumb>
@@ -20,5 +20,5 @@ export default {
 </script>
 
 <style scoped>
-/* Add your breadcrumb styling here */
+
 </style>
