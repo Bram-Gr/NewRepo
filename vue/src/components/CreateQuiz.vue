@@ -1,6 +1,6 @@
 <template>
   <div class="modal-content">
-    <form @submit="submitQuiz">
+    <form @submit="submitQuiz" netlify>
       <label for="quizName">Quiz Name:</label>
       <b-form-textarea
         placeholder="26 character maximum"
@@ -86,16 +86,22 @@ export default {
         categoryId: 6,
         questionAnswers: this.questions,
       };
+      const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        // to allow multipart form submission for mobile, since it doesn't auto fill the header like in browser
+      },
+    };
       quizService
-        .createQuiz(this.$store.state.user.id, payload)
+        .createQuiz(this.$store.state.user.id, payload, config)
         .then((response) => {
-          console.log("Quiz created successfully", response);
+          this.response = response;
           // Close the modal
           this.closeModal();
         })
         .catch((error) => {
           // Handle any errors that occur during the Axios request
-          console.error("Error Submitting Quiz", error);
+          this.error = error;
         });
     },
     closeModal() {

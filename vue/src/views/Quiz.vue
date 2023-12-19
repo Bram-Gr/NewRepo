@@ -30,7 +30,7 @@ export default {
           this.quizName = response.data[0].quizName;
         });
     } catch (error) {
-      console.error(error);
+      error;
     }
     try {
       quizService
@@ -39,7 +39,7 @@ export default {
           this.questions = response.data;
         });
     } catch (error) {
-      console.error(error);
+      error;
     }
   },
   created() {

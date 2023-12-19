@@ -65,7 +65,7 @@ export default {
         // Handle the case where neither userId nor categoryId is present
       }
     } catch (error) {
-      console.error(error);
+      error;
     }
   },
   created() {

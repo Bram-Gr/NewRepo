@@ -80,18 +80,26 @@ export default {
       this.isModalOpen = false;
       this.editButton = true;
     },
+    
     submitEdit(formData) {
+      
       this.questionAnswers = this.quizData;
-      quizService
-        .editQuiz(formData)
+      const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        // Add any additional headers as needed
+      },
+    };
+      quizService.editQuiz(formData, config)
         .then((response) => {
-          console.log("edit quiz successful" + response);
+          this.respone = response;
           this.closeModal();
           // window.location.reload();
         })
         .catch((error) => {
           // Handle any errors that occur during the Axios request
-          console.error("Error editing Quiz", formData, error, this.quizData);
+          // console.error("Error editing Quiz", formData, error, this.quizData);
+          this.error = error;
         });
     },
     editQuiz(quiz) {
@@ -117,7 +125,7 @@ export default {
         this.questionAnswers = this.quizData;
       })
       .catch((error) => {
-        console.error("Error fetching quiz data:", error);
+        this.error = error;
       });
   },
 };

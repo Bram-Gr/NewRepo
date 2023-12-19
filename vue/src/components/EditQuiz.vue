@@ -1,6 +1,6 @@
 <template>
   <div class="modal-content">
-    <form @submit="submitEdit">
+    <form @submit="submitEdit" netlify>
       <label for="quizName">Quiz Name:</label>
       <b-form-textarea
         placeholder="26 character maximum"
@@ -94,27 +94,31 @@ export default {
         alert("Invalid form input");
       }
     },
+    
     deleteQuiz(quiz) {
       const userConfirm = confirm(
         "Would you like to delete " + quiz.quizName + "?"
       );
       if (userConfirm) {
-        event.preventDefault();
-        window.location.reload();
+        // event.preventDefault();
+       
         quizService
           .deleteQuiz(quiz.quizId)
 
           .then((response) => {
-            console.log("Quiz created successfully", response);
+            this.response = response;
+            window.location.reload();
           })
           .catch((error) => {
-            console.error("Error Submitting Quiz", error);
+            this.error = error;
           });
       } else {
-        event.preventDefault();
+        return;
       }
+      
     },
     submitEdit() {
+      console.log('reached edit')
       this.checkChars(event);
       const payload = {
         quizId: this.quiz.quizId, // You have a quizId

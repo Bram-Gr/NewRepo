@@ -185,6 +185,7 @@ body {
   border: none;
 }
 .logo {
+  padding-right:.1rem;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -200,8 +201,8 @@ body {
 
 @media screen and (max-width: 768px) {
   .navbar-expand-md .navbar-collapse {
-    text-align: left;
-    justify-content: flex-start;
+    /* text-align: left; */
+    /* justify-content: flex-start; */
     display: flex;
   }
   .main-menu {
