@@ -93,8 +93,8 @@ export default {
       quizService.editQuiz(formData, config)
         .then((response) => {
           this.respone = response;
-          this.closeModal();
-          // window.location.reload();
+          // this.closeModal();
+          window.location.reload();
         })
         .catch((error) => {
           // Handle any errors that occur during the Axios request

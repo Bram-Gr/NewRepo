@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+
 import SubNav from "./components/SubNav";
 import NavBar from "./components/NavBar";
 export default {
@@ -45,7 +46,7 @@ export default {
     z-index: 1;
     position: absolute;
     top: 65px;
-    left: 80px;
+    left: 50px;
   }
   #nav {
     display: inline-block;

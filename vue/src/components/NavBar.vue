@@ -60,6 +60,7 @@ export default {
   name: "NavigationComponent",
   data() {
     return {
+  
       fullWidth: true,
       checkbox: false,
       view: {

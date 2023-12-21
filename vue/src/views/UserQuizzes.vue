@@ -87,6 +87,7 @@ export default {
   }
 
   .create {
+  padding-bottom: 3rem;
     padding-top: 2rem;
     display: flex;
     justify-content: center;
@@ -101,7 +102,7 @@ export default {
     margin-left: 2rem;
   }
   .custom {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     text-align: center;
   }

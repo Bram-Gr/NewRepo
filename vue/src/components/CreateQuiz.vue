@@ -1,6 +1,6 @@
 <template>
   <div class="modal-content">
-    <form @submit="submitQuiz" netlify>
+    <form @submit.prevent="submitQuiz" netlify>
       <label for="quizName">Quiz Name:</label>
       <b-form-textarea
         placeholder="26 character maximum"
@@ -97,7 +97,8 @@ export default {
         .then((response) => {
           this.response = response;
           // Close the modal
-          this.closeModal();
+          // this.closeModal();
+          window.location.reload();
         })
         .catch((error) => {
           // Handle any errors that occur during the Axios request

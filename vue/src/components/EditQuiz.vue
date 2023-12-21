@@ -1,6 +1,6 @@
 <template>
   <div class="modal-content">
-    <form @submit="submitEdit" netlify>
+    <form @submit.prevent="submitEdit" netlify>
       <label for="quizName">Quiz Name:</label>
       <b-form-textarea
         placeholder="26 character maximum"
@@ -118,7 +118,6 @@ export default {
       
     },
     submitEdit() {
-      console.log('reached edit')
       this.checkChars(event);
       const payload = {
         quizId: this.quiz.quizId, // You have a quizId
