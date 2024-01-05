@@ -16,5 +16,5 @@ Planned Features
 <li>A community quiz category</li>
 <li>Users will have the ability to flag or report community quizzes for review</li>
 <li>Top rated quizzes will be calculated by community input</li>
-<li>AI features for multiple choice quizzes on any quiz</li>
+<li>AI features for multiple choice options on any quiz</li>
 </ul>
